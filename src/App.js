@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
 
 // TODO: Set up Redux store inside the store folder in src/
 // TODO: Set up Less and add  *.css to the .gitingnore
