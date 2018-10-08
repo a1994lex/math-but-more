@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
+import { routes } from './routes'
+import {Header, Sidebar} from './components'
+import { BrowserRouter as Router, Route } from "react-router-dom"
+
 import './App.css'
 
 // TODO: Set up Redux store inside the store folder in src/
@@ -14,15 +17,25 @@ type Props = {}
 export default class App extends Component<Props> {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Math But More</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <Router>
+					<div className="App">
+						<Header/>
+						<div className="layout-row">
+              <Sidebar/>
+							<div className="main-content">
+
+                {routes.map((route, index) => (
+                   <Route
+                     key={index}
+                     path={route.path}
+                     exact = {route.exact || false}
+                     component={route.main}
+                   />
+                ))}
+							</div>
+						</div>
+					</div>
+				</Router>
     );
   }
 }
