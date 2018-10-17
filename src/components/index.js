@@ -1,4 +1,6 @@
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import LaunchButton from "./LaunchButton";
-export { Header, Sidebar, LaunchButton };
+import SubjectTag from "./SubjectTag";
+import TypeTag from "./TypeTag";
+export { Header, Sidebar, LaunchButton, SubjectTag, TypeTag };
