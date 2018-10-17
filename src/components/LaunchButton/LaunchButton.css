@@ -1,0 +1,36 @@
+.LaunchButtonContainer {
+  padding: 6px 6px;
+}
+
+.LaunchButton {
+  background: -moz-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
+  background: -webkit-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
+  background: -o-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
+  background: -ms-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
+  background: linear-gradient(to bottom, #ffcc66 35%, #aaff66 80%);
+  background-color: #ffcc66;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+  color: #00206f;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px 6px;
+}
+.LaunchButton:hover {
+  background: -moz-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
+  background: -webkit-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
+  background: -o-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
+  background: -ms-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
+  background: linear-gradient(to bottom, #aaff66 35%, #ffcc66 80%);
+  background-color: #aaff66;
+}
+.LaunchButton:active {
+  position: relative;
+  top: 1px;
+}
