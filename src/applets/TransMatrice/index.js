@@ -1,2 +1,2 @@
-import TransMatrice from './TransMatrice'
-export default TransMatrice
+import TransMatrice from "./TransMatrice";
+export default TransMatrice;

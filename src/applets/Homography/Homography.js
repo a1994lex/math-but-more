@@ -1,11 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
-type Props = {}
+type Props = {};
 
 export default class Homography extends Component<Props> {
   render() {
-    return <div className="Homography">
-      Homography
-    </div>
+    return <div className="Homography">Homography</div>;
   }
 }

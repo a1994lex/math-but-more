@@ -1,11 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
-type Props = {}
+type Props = {};
 
 export default class Angles extends Component<Props> {
   render() {
-    return <div className="Angles">
-      Angles
-    </div>
+    return <div className="Angles">Angles</div>;
   }
 }

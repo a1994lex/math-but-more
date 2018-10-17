@@ -1,11 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
-type Props = {}
+type Props = {};
 
 export default class WordProblems extends Component<Props> {
   render() {
-    return <div className="WordProblems">
-      WordProblems
-    </div>
+    return <div className="WordProblems">WordProblems</div>;
   }
 }
