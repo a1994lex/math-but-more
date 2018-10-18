@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import AppletHeader from "./AppletHeader";
+import Card from "./Card";
 import {
   LaunchButton,
   PrimaryButton,
@@ -19,5 +20,6 @@ export {
   TextButton,
   SubjectTag,
   TypeTag,
-  AppletHeader
+  AppletHeader,
+  Card
 };
