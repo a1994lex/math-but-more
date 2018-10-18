@@ -16,6 +16,7 @@
   font-weight: bold;
   text-decoration: none;
   padding: 6px 6px;
+  transition: 0.15s;
 }
 .TypeTag:hover {
   background-color: #e5b75b;
