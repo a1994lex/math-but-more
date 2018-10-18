@@ -14,7 +14,10 @@ class TypeTag extends Component {
   render() {
     return (
       <div className="TypeTagContainer">
-        <div className="TypeTag" onClick={this.props.onClick}>
+        <div
+          className="TypeTag"
+          onClick={() => this.props.onClick(this.props.type)}
+        >
           Type: {this.props.type}
         </div>
       </div>

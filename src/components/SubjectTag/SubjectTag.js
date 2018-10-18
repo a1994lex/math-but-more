@@ -6,7 +6,10 @@ class SubjectTag extends Component {
   render() {
     return (
       <div className="SubjectTagContainer">
-        <div className="SubjectTag" onClick={this.props.onClick}>
+        <div
+          className="SubjectTag"
+          onClick={() => this.props.onClick(this.props.subject)}
+        >
           Subject: {this.props.subject}
         </div>
       </div>
