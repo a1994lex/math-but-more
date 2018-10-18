@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { LaunchButton } from "../";
+import type { MathRoute } from "../../models";
 
 import "./Card.css";
 
-type Props = {};
+type Props = {
+  route: MathRoute
+};
 export default class Card extends Component<Props> {
   render() {
     //TODO: finish card body
