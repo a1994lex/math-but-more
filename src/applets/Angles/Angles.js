@@ -1,11 +1,25 @@
 import React, {Component} from 'react'
+import {showTooltip, hideTooltip} from '../../store/tools';
+import {connect} from 'react-redux'
+type Props = {
+  showTooltip: Function,
+  hideTooltip: Function,
+}
 
-type Props = {}
-
-export default class Angles extends Component<Props> {
+class Angles extends Component<Props> {
   render() {
     return <div className="Angles">
-      Angles
+      <button id={'button'} onClick={()=>{
+        this.props.showTooltip('test', '#button')
+        setTimeout(()=>this.props.hideTooltip(), 2000)
+      }}>Hey</button>
     </div>
   }
 }
+
+const mapDispatchToProps = {
+  showTooltip,
+  hideTooltip,
+}
+
+export default connect(null, mapDispatchToProps)(Angles)

@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { routes } from './routes'
-import {Header, Sidebar} from './components'
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import {Provider, connect} from 'react-redux'
+import store from './store'
+
+import {Header, Sidebar} from './components'
+import Tooltip from 'react-portal-tooltip'
 
 import './App.css'
 
@@ -10,12 +14,17 @@ import './App.css'
 // TODO: Use Tooltip as a redux example in App.js component
 // TODO: Configure production site
 
-type Props = {}
+type Props = {
+	showTooltip: boolean,
+	tooltipParent: string,
+	tooltipContent: React$Component<*>,
+	tooltipPosition: ?string,
+}
 
-export default class App extends Component<Props> {
+class App extends Component<Props> {
   render() {
     return (
-        <Router>
+      	<Router>
 					<div className="App">
 						<Header/>
 						<div className="layout-row">
@@ -31,8 +40,37 @@ export default class App extends Component<Props> {
                 ))}
 							</div>
 						</div>
+            <Tooltip
+              active={this.props.showTooltip}
+              parent={this.props.tooltipParent || '#App'}
+              position={this.props.tooltipPosition || 'right'}>
+              {this.props.tooltipContent}
+            </Tooltip>
 					</div>
-				</Router>
+        </Router>
     );
   }
+}
+
+function mapStateToProps(state) {
+	return {
+		showTooltip: state.tools.tooltip.isActive,
+		tooltipParent: state.tools.tooltip.parent,
+		tooltipContent: state.tools.tooltip.content,
+		tooltipPosition: state.tools.tooltip.position,
+	}
+}
+
+const ConnectedApp = connect(mapStateToProps)(App)
+
+export default class AppWrappedInProvider extends Component<void> {
+	render() {
+		return (
+			<Provider store={store}>
+
+					<ConnectedApp />
+
+			</Provider>
+		)
+	}
 }
