@@ -9,7 +9,9 @@ class TextButton extends Component {
       return (
         <div className="TextButtonContainer">
           <Link to={this.props.route.path} key={this.props.route.path}>
-            <div className="TextButton">{this.props.route.name}</div>
+            <div className="TextButton">
+              {this.props.text ? this.props.text : this.props.route.name}
+            </div>
           </Link>
         </div>
       );
