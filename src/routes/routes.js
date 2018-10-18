@@ -1,5 +1,5 @@
 import Home from './Home'
-import {Angles, Homography, RobotMaze, TransMatrice, WordProblems} from './../applets'
+import {Angles, Homography, RobotMaze, TransMatrice, WordProblems, NegationReflex} from './../applets'
 
 import type {MathRoute} from '../models'
 
@@ -34,5 +34,10 @@ export const routes: MathRoute[] = [
     path: "/word-problems",
     main: WordProblems,
     name: "Word Problems"
+  },
+  {
+	path:"/negationreflex",
+	main: NegationReflex,
+	name: "Negation Reflex"
   }
 ];
