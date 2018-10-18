@@ -23,12 +23,7 @@
   padding: 6px 6px;
 }
 .LaunchButton:hover {
-  background: -moz-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
-  background: -webkit-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
-  background: -o-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
-  background: -ms-linear-gradient(top, #aaff66 35%, #ffcc66 80%);
-  background: linear-gradient(to bottom, #aaff66 35%, #ffcc66 80%);
-  background-color: #aaff66;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
 .LaunchButton:active {
   position: relative;
