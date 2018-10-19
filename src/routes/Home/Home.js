@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "../../components/Card";
+import { appletRoutes } from "../routes";
 
 import "./Home.css";
 
@@ -9,11 +10,11 @@ export default class Home extends Component<Props> {
     console.log("rendering home");
     return (
       <div className="Home">
-        <Card route={1} />
-        <Card route={2} />
-        <Card route={3} />
-        <Card route={4} />
-        <Card route={5} />
+        <Card route={appletRoutes[0]} />
+        <Card route={appletRoutes[1]} />
+        <Card route={appletRoutes[2]} />
+        <Card route={appletRoutes[3]} />
+        <Card route={appletRoutes[4]} />
       </div>
     );
   }

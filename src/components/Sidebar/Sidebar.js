@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import {routes} from '../../routes';
+import { appletRoutes } from '../../routes';
 import type {MathRoute} from '../../models'
 
 
@@ -9,7 +9,7 @@ export default class Sidebar extends Component<{}> {
   render() {
     return  (
         <div className="Sidebar">
-            {routes.map((route: MathRoute) => (
+            {appletRoutes.map((route: MathRoute) => (
               <Link to={route.path} key={route.path}>
                 <div className="side-link">
                   {route.name}
