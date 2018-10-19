@@ -4,7 +4,8 @@ import {
   Homography,
   RobotMaze,
   TransMatrice,
-  WordProblems
+  WordProblems,
+  NegationReflex
 } from "./../applets";
 
 import type { MathRoute } from "../models";
