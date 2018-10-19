@@ -1,0 +1,33 @@
+.Accent1ButtonContainer {
+  padding: 6px 6px;
+}
+
+.Accent1Button {
+  background: -moz-linear-gradient(top, #aaff66 35%, #a2f260 80%);
+  background: -webkit-linear-gradient(top, #aaff66 35%, #a2f260 80%);
+  background: -o-linear-gradient(top, #aaff66 35%, #a2f260 80%);
+  background: -ms-linear-gradient(top, #aaff66 35%, #a2f260 80%);
+  background: linear-gradient(to bottom, #aaff66 35%, #a2f260 80%);
+  background-color: #aaff66;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+  color: black;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: 0.15s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+.Accent1Button:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.Accent1Button:active {
+  position: relative;
+  top: 1px;
+}

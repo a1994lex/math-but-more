@@ -1,7 +1,13 @@
-import Home from './Home'
-import {Angles, Homography, RobotMaze, TransMatrice, WordProblems, NegationReflex} from './../applets'
+import Home from "./Home";
+import {
+  Angles,
+  Homography,
+  RobotMaze,
+  TransMatrice,
+  WordProblems
+} from "./../applets";
 
-import type {MathRoute} from '../models'
+import type { MathRoute } from "../models";
 
 export const routes: MathRoute[] = [
   {
@@ -13,17 +19,17 @@ export const routes: MathRoute[] = [
   {
     path: "/angles.yum",
     main: Angles,
-    name: "Angles"
+    name: "Angles.yum"
   },
   {
     path: "/homography",
     main: Homography,
-    name: "Homography",
+    name: "Homography"
   },
   {
     path: "/robotmaze",
     main: RobotMaze,
-    name: "Robot Maze",
+    name: "Robot Maze"
   },
   {
     path: "/transitions",
@@ -36,8 +42,8 @@ export const routes: MathRoute[] = [
     name: "Word Problems"
   },
   {
-	path:"/negationreflex",
-	main: NegationReflex,
-	name: "Negation Reflex"
+    path: "/negationreflex",
+    main: NegationReflex,
+    name: "Negation Reflex"
   }
 ];

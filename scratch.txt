@@ -1,0 +1,12 @@
+<SubjectTag
+subject="Angles"
+onClick={subject => {
+console.log("subject! " + subject);
+}}
+/>
+<TypeTag
+type={TypeTag.TYPE_GAME}
+onClick={type => {
+console.log("type! " + type);
+}}
+/>
