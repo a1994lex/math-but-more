@@ -13,6 +13,11 @@ import {
 } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import { Provider, connect } from "react-redux";
+import store from "./store";
+
+import Tooltip from "react-portal-tooltip";
+
 import "./App.css";
 
 // TODO: Set up Redux store inside the store folder in src/
