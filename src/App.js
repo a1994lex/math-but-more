@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { routes, Home } from "./routes";
+import { appletRoutes, Home, homeRoute } from "./routes";
 import {
   Header,
   Sidebar,
@@ -40,23 +40,22 @@ class App extends Component<Props> {
           <Header />
           <div className="layout-column">
             <div className="main-content">
-              <PrimaryButton text="PrimaryButton" />
-              <Accent1Button text="Accent1Button" />
-              <Accent2Button text="Accent2Button" />
-              <LaunchButton route={routes[1]} />
-              <SubjectTag subject="Quick Maths" />
-              <TypeTag type={TypeTag.TYPE_GAME} />
-              <Home />
-              {/*<Switch>
-                {routes.map((route, index) => (
+              <Route
+                key={0}
+                path={homeRoute.path}
+                exact={true}
+                component={Home}
+              />
+              <div>
+                {appletRoutes.map((route, index) => (
                   <Route
-                    key={index}
+                    key={index+1}
                     path={route.path}
                     exact={route.exact || false}
                     component={route.main}
                   />
                 ))}
-              </Switch>*/}
+              </div>
             </div>
           </div>
         </div>
