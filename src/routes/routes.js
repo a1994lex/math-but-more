@@ -40,5 +40,10 @@ export const routes: MathRoute[] = [
     path: "/word-problems",
     main: WordProblems,
     name: "Word Problems"
+  },
+  {
+    path: "/negationreflex",
+    main: NegationReflex,
+    name: "Negation Reflex"
   }
 ];
