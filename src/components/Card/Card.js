@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { LaunchButton } from "../";
 import type { MathRoute } from "../../models";
+import { routes } from "../../routes/routes";
 
 import "./Card.css";
 
@@ -13,8 +14,8 @@ export default class Card extends Component<Props> {
     return (
       <div className="CardContainer">
         <div className="Card">
-          <h4>{this.props.route.name}</h4>
-          <LaunchButton route={this.props.route} />
+          <h4>{routes[this.props.route].name}</h4>
+          <LaunchButton route={routes[this.props.route]} />
         </div>
       </div>
     );
