@@ -9,7 +9,7 @@ export default class Home extends Component<Props> {
     console.log("rendering home");
     return (
       <div className="Home">
-        {/*<Card route={1} />*/}
+        <Card route={1} />
         <Card route={2} />
         <Card route={3} />
         <Card route={4} />

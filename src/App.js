@@ -20,9 +20,14 @@ import "./App.css";
 // TODO: Use Tooltip as a redux example in App.js component
 // TODO: Configure production site
 
-type Props = {};
+type Props = {
+  showTooltip: boolean,
+  tooltipParent: string,
+  tooltipContent: React$Component<*>,
+  tooltipPosition: ?string
+};
 
-export default class App extends Component<Props> {
+class App extends Component<Props> {
   render() {
     return (
       <Router>
@@ -51,6 +56,27 @@ export default class App extends Component<Props> {
           </div>
         </div>
       </Router>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    showTooltip: state.tools.tooltip.isActive,
+    tooltipParent: state.tools.tooltip.parent,
+    tooltipContent: state.tools.tooltip.content,
+    tooltipPosition: state.tools.tooltip.position
+  };
+}
+
+const ConnectedApp = connect(mapStateToProps)(App);
+
+export default class AppWrappedInProvider extends Component<void> {
+  render() {
+    return (
+      <Provider store={store}>
+        <ConnectedApp />
+      </Provider>
     );
   }
 }
