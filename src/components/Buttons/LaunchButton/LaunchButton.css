@@ -9,9 +9,9 @@
   background: -ms-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
   background: linear-gradient(to bottom, #ffcc66 35%, #aaff66 80%);
   background-color: #ffcc66;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   display: inline-block;
   user-select: none;
   cursor: pointer;
@@ -20,8 +20,9 @@
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
-  padding: 6px 6px;
+  padding: 8px 12px;
   transition: 0.15s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 .LaunchButton:hover {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);

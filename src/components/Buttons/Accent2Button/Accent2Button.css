@@ -3,15 +3,15 @@
 }
 
 .Accent2Button {
-  background: -moz-linear-gradient(top, #ffcc66 35%, #e5b75b 80%);
-  background: -webkit-linear-gradient(top, #ffcc66 35%, #e5b75b 80%);
-  background: -o-linear-gradient(top, #ffcc66 35%, #e5b75b 80%);
-  background: -ms-linear-gradient(top, #ffcc66 35%, #e5b75b 80%);
-  background: linear-gradient(to bottom, #ffcc66 35%, #e5b75b 80%);
+  background: -moz-linear-gradient(top, #ffcc66 35%, #f2c160 80%);
+  background: -webkit-linear-gradient(top, #ffcc66 35%, #f2c160 80%);
+  background: -o-linear-gradient(top, #ffcc66 35%, #f2c160 80%);
+  background: -ms-linear-gradient(top, #ffcc66 35%, #f2c160 80%);
+  background: linear-gradient(to bottom, #ffcc66 35%, #f2c160 80%);
   background-color: #ffcc66;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   display: inline-block;
   user-select: none;
   cursor: pointer;
@@ -20,8 +20,9 @@
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
-  padding: 6px 6px;
+  padding: 8px 12px;
   transition: 0.15s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 .Accent2Button:hover {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
