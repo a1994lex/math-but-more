@@ -1,22 +1,12 @@
 import React, { Component } from "react";
 import { appletRoutes, Home, homeRoute } from "./routes";
-import {
-  Header,
-  Sidebar,
-  Card,
-  TypeTag,
-  SubjectTag,
-  PrimaryButton,
-  Accent1Button,
-  Accent2Button,
-  LaunchButton
-} from "./components";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Header } from "./components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Provider, connect } from "react-redux";
 import store from "./store";
 
-import Tooltip from "react-portal-tooltip";
+// import Tooltip from "react-portal-tooltip";
 
 import "./App.css";
 
