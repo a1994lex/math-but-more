@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { appletRoutes, Home, homeRoute, AppletWrapper } from "./routes";
-import { Header, AppletHeader } from "./components";
+import { Header } from "./components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Provider, connect } from "react-redux";
