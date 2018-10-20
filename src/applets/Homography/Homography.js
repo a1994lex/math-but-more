@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AppletHeader from "../../components/AppletHeader";
 
 type Props = {};
 

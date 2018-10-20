@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
-import { AppletHeader } from '../../components';
 import { showTooltip, hideTooltip } from "../../store/tools";
 
 type Props = {
