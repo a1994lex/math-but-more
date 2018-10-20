@@ -1,9 +1,16 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
 import "./TextButton.css";
 
-class TextButton extends Component {
+import { Link } from "react-router-dom";
+import React, { Component } from "react";
+
+import type { MathRoute } from '../../../models/routeTypes';
+
+type Props = {
+   route?: MathRoute,
+   onClick: ()=>void,
+   text: string,
+}
+class TextButton extends Component<Props> {
   render() {
     if (this.props.route !== undefined) {
       return (

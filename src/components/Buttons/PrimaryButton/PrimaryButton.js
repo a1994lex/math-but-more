@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import "./PrimaryButton.css";
 
-class PrimaryButton extends Component {
+type Props = {
+   onClick: ()=>void,
+   text: string,
+}
+class PrimaryButton extends Component<Props> {
   render() {
     return (
       <div className="PrimaryButtonContainer">

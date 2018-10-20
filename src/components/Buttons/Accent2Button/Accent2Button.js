@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import "./Accent2Button.css";
 
-class Accent2Button extends Component {
+type Props = {
+   onClick: () => void,
+   text: string,
+}
+class Accent2Button extends Component<Props> {
   render() {
     return (
       <div className="Accent2ButtonContainer">

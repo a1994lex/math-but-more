@@ -1,9 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
 import "./LaunchButton.css";
 
-class LaunchButton extends Component {
+import { Link } from "react-router-dom";
+import React, { Component } from "react";
+
+import type { MathRoute } from '../../../models/routeTypes';
+
+type Props = {
+   route: MathRoute
+}
+class LaunchButton extends Component<Props> {
   render() {
     return (
       <div className="LaunchButtonContainer">

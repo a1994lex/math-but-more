@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import "./SubjectTag.css";
 
-class SubjectTag extends Component {
+type Props = {
+   onClick: subject => void,
+   subject: string,
+}
+class SubjectTag extends Component<Props> {
   render() {
     return (
       <div className="SubjectTagContainer">
