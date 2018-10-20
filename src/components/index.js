@@ -1,7 +1,3 @@
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import AppletHeader from "./AppletHeader";
-import Card from "./Card";
 import {
   LaunchButton,
   PrimaryButton,
@@ -10,6 +6,11 @@ import {
   TextButton
 } from "./Buttons";
 import { SubjectTag, TypeTag } from "./Tags";
+import AppletHeader from "./AppletHeader";
+import Card, { AppletCard } from "./Card";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+
 export {
   Header,
   Sidebar,
@@ -21,5 +22,6 @@ export {
   SubjectTag,
   TypeTag,
   AppletHeader,
-  Card
+  Card,
+  AppletCard
 };

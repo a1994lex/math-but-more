@@ -1,2 +1,4 @@
+import AppletCard from './AppletCard';
+
 import Card from "./Card";
-export default Card;
+export { Card, AppletCard };

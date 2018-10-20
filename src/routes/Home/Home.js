@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { Card, LaunchButton } from "../../components";
-import { appletRoutes } from "../routes";
-
 import "./Home.css";
+
+import React, { Component } from "react";
+
+import { AppletCard, Card } from '../../components';
+import { appletRoutes } from "../routes";
 
 type Props = {};
 export default class Home extends Component<Props> {
@@ -10,10 +11,7 @@ export default class Home extends Component<Props> {
     return (
       <div className="Home">
         {appletRoutes.map((route: MathRoute) => (
-          <Card key={route.name}>
-            <h3>{route.name}</h3>
-            <LaunchButton route={route}/>
-          </Card>))
+          <AppletCard key={route.name} route={route}/>))
         }
       </div>
     );
