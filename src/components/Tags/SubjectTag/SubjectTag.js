@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import "./SubjectTag.css";
 
@@ -6,19 +6,17 @@ type Props = {
    onClick: subject => void,
    subject: string,
 }
-class SubjectTag extends Component<Props> {
-  render() {
+function SubjectTag( props:Props ) {
     return (
       <div className="SubjectTagContainer">
         <div
           className="SubjectTag"
-          onClick={() => this.props.onClick(this.props.subject)}
+          onClick={() => props.onClick(props.subject)}
         >
-          Subject: {this.props.subject}
+          Subject: {props.subject}
         </div>
       </div>
     );
-  }
 }
 
 export default SubjectTag;

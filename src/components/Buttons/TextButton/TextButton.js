@@ -1,7 +1,7 @@
 import "./TextButton.css";
 
 import { Link } from "react-router-dom";
-import React, { Component } from "react";
+import React from "react";
 
 import type { MathRoute } from '../../../models/routeTypes';
 
@@ -10,27 +10,25 @@ type Props = {
    onClick: ()=>void,
    text: string,
 }
-class TextButton extends Component<Props> {
-  render() {
-    if (this.props.route !== undefined) {
-      return (
-        <div className="TextButtonContainer">
-          <Link to={this.props.route.path} key={this.props.route.path}>
-            <div className="TextButton">
-              {this.props.text ? this.props.text : this.props.route.name}
-            </div>
-          </Link>
-        </div>
-      );
-    } else {
-      return (
-        <div className="TextButtonContainer">
-          <div className="TextButton" onClick={this.props.onClick}>
-            {this.props.text}
+function TextButton( props:Props) {
+  if (props.route !== undefined) {
+    return (
+      <div className="TextButtonContainer">
+        <Link to={props.route.path} key={props.route.path}>
+          <div className="TextButton">
+            {props.text ? props.text : props.route.name}
           </div>
+        </Link>
+      </div>
+    );
+  } else {
+    return (
+      <div className="TextButtonContainer">
+        <div className="TextButton" onClick={props.onClick}>
+          {props.text}
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 

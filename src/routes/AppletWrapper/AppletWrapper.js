@@ -4,11 +4,11 @@ import { AppletHeader } from "../../components";
 type Props = {
     applet: Component
 }
-export default class AppletWrapper extends Component<Props> {
-    render() {
+function AppletWrapper( props:Props ) {
         return (<div>
             <AppletHeader />
-            <this.props.applet/>
+            <props.applet/>
         </div>)
-    }
 }
+
+export default AppletWrapper;
