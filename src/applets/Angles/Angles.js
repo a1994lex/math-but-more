@@ -13,7 +13,6 @@ class Angles extends Component<Props> {
   render() {
     return (
       <div className="Angles">
-        <AppletHeader />
         <button
           id={"button"}
           onClick={() => {

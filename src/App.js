@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { appletRoutes, Home, homeRoute } from "./routes";
-import { Header } from "./components";
+import { appletRoutes, Home, homeRoute, AppletWrapper } from "./routes";
+import { Header, AppletHeader } from "./components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Provider, connect } from "react-redux";
@@ -42,7 +42,7 @@ class App extends Component<Props> {
                     key={index+1}
                     path={route.path}
                     exact={route.exact || false}
-                    component={route.main}
+                    render={() => <AppletWrapper child={route.main}/>}
                   />
                 ))}
               </div>

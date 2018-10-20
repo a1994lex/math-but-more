@@ -6,10 +6,7 @@ type Props = {};
 export default class Homography extends Component<Props> {
   render() {
     return (
-      <div className="Homography">
-        <AppletHeader />
-        <p>Homography</p>
-      </div>
+      <div className="Homography">Homography</div>
     );
   }
 }
