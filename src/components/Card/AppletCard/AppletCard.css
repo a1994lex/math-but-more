@@ -1,0 +1,18 @@
+.AppletCard-button-and-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.AppletCard-desc-and-thumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 18px;
+}
+
+.AppletCard-tags {
+    display: flex;
+    width: auto;
+}
