@@ -2,7 +2,7 @@ import "./Home.css";
 
 import React, { Component } from "react";
 
-import { AppletCard, Card } from '../../components';
+import { AppletCard } from '../../components';
 import { appletRoutes } from "../routes";
 
 type Props = {};
