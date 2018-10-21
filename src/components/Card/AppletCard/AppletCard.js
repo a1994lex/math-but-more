@@ -9,7 +9,9 @@ import "./AppletCard.css"
 
 
 type Props = {
-    route: MathRoute
+    route: MathRoute,
+    onSubjectClick: subject=>void,
+    onTypeClick: type=>void
 }
 function AppletCard( props:Props ) {
     //TODO: use actual description, thumbnail, tags, and tag callbacks
@@ -23,12 +25,12 @@ function AppletCard( props:Props ) {
             <div className="AppletCard-button-and-tags">
                 <div className="AppletCard-tags">
                     <TypeTag
-                        type={TypeTag.TYPE_GAME}
-                        onClick={()=>console.log("subject clicked")}
+                        type={props.route.name}
+                        onClick={props.onTypeClick}
                     />
                     <SubjectTag
-                        subject="mySubject"
-                        onClick={()=>console.log("subject clicked")}
+                        subject={props.route.name}
+                        onClick={props.onSubjectClick}
                     />
                 </div>
                 <LaunchButton route={props.route}/>
