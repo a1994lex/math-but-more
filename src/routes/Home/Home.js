@@ -11,38 +11,38 @@ export default class Home extends Component<Props> {
     super()
     this.state = {
       routes: appletRoutes,
-      hasFilter: false
+      filter: ""
     }
   }
 
   clearFilter = () => {
     this.setState({
       routes: appletRoutes,
-      hasFilter: false
+      filter: ""
     })
   }
 
   filterByType = ( type:string ) => {
-    console.log("filter by type called")
     this.setState({
       routes: appletRoutes.filter(route => route.name === type),
-      hasFilter: true
+      filter: "Type: " + type
     })
   }
 
   filterBySubject = ( subject:string ) => {
     this.setState({
       routes: appletRoutes.filter(route => route.name === subject),
-      hasFilter: true
+      filter: "Subject: " + subject
     })
   }
 
   render() {
     return (
       <div className="Home">
-        {this.state.hasFilter ? <TextButton
+        {this.state.filter !== "" ? <div className="Home-filter-indicator">
+          <h3>{this.state.filter}</h3><TextButton
           text="Remove filter"
-          onClick={this.clearFilter}/> : ""}
+          onClick={this.clearFilter}/></div> : ""}
         {this.state.routes.map((route: MathRoute) => (
           <AppletCard
             key={route.name}

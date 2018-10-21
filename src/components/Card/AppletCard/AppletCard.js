@@ -14,7 +14,7 @@ type Props = {
     onTypeClick: type=>void
 }
 function AppletCard( props:Props ) {
-    //TODO: use actual description, thumbnail, tags, and tag callbacks
+    //TODO: use actual description, thumbnail, and tags
     return (
         <Card>
             <h3>{props.route.name}</h3>
