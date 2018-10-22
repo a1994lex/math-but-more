@@ -10,13 +10,14 @@ import {
 
 import type { MathRoute } from "../models";
 
-export const routes: MathRoute[] = [
-  {
+export const homeRoute: MathRoute = {
     path: "/",
     exact: true,
     main: Home,
     name: "Home"
-  },
+  }
+
+export const appletRoutes: MathRoute[] = [
   {
     path: "/angles.yum",
     main: Angles,

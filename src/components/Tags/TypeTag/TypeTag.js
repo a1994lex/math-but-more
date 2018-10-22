@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import "./TypeTag.css";
 
-class TypeTag extends Component {
+type Props = {
+   onClick: type => void,
+   type: string,
+}
+class TypeTag extends Component<Props> {
   //Class-level constants, for use when instantiating TypeTags
   static get TYPE_GAME() {
     return "Game";

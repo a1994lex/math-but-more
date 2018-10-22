@@ -1,22 +1,12 @@
 import React, { Component } from "react";
-import { routes, Home } from "./routes";
-import {
-  Header,
-  Sidebar,
-  Card,
-  TypeTag,
-  SubjectTag,
-  PrimaryButton,
-  Accent1Button,
-  Accent2Button,
-  LaunchButton
-} from "./components";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { appletRoutes, Home, homeRoute, AppletWrapper } from "./routes";
+import { Header } from "./components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Provider, connect } from "react-redux";
 import store from "./store";
 
-import Tooltip from "react-portal-tooltip";
+// import Tooltip from "react-portal-tooltip";
 
 import "./App.css";
 
@@ -40,23 +30,22 @@ class App extends Component<Props> {
           <Header />
           <div className="layout-column">
             <div className="main-content">
-              <PrimaryButton text="PrimaryButton" />
-              <Accent1Button text="Accent1Button" />
-              <Accent2Button text="Accent2Button" />
-              <LaunchButton route={routes[1]} />
-              <SubjectTag subject="Quick Maths" />
-              <TypeTag type={TypeTag.TYPE_GAME} />
-              <Home />
-              {/*<Switch>
-                {routes.map((route, index) => (
+              <Route
+                key={0}
+                path={homeRoute.path}
+                exact={true}
+                component={Home}
+              />
+              <div>
+                {appletRoutes.map((route, index) => (
                   <Route
-                    key={index}
+                    key={index+1}
                     path={route.path}
                     exact={route.exact || false}
-                    component={route.main}
+                    render={() => <AppletWrapper applet={route.main}/>}
                   />
                 ))}
-              </Switch>*/}
+              </div>
             </div>
           </div>
         </div>

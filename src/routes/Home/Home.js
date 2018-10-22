@@ -1,19 +1,55 @@
-import React, { Component } from "react";
-import Card from "../../components/Card";
-
 import "./Home.css";
+
+import React, { Component } from "react";
+
+import { AppletCard, TextButton } from '../../components';
+import { appletRoutes } from "../routes";
 
 type Props = {};
 export default class Home extends Component<Props> {
+  constructor() {
+    super()
+    this.state = {
+      routes: appletRoutes,
+      filter: ""
+    }
+  }
+
+  clearFilter = () => {
+    this.setState({
+      routes: appletRoutes,
+      filter: ""
+    })
+  }
+
+  filterByType = ( type:string ) => {
+    this.setState({
+      routes: appletRoutes.filter(route => route.name === type),
+      filter: "Type: " + type
+    })
+  }
+
+  filterBySubject = ( subject:string ) => {
+    this.setState({
+      routes: appletRoutes.filter(route => route.name === subject),
+      filter: "Subject: " + subject
+    })
+  }
+
   render() {
-    console.log("rendering home");
     return (
       <div className="Home">
-        <Card route={1} />
-        <Card route={2} />
-        <Card route={3} />
-        <Card route={4} />
-        <Card route={5} />
+        {this.state.filter !== "" ? <div className="Home-filter-indicator">
+          <h3>{this.state.filter}</h3><TextButton
+          text="Remove filter"
+          onClick={this.clearFilter}/></div> : ""}
+        {this.state.routes.map((route: MathRoute) => (
+          <AppletCard
+            key={route.name}
+            onSubjectClick={this.filterBySubject}
+            onTypeClick={this.filterByType}
+            route={route}/>))
+        }
       </div>
     );
   }

@@ -1,3 +1,4 @@
 import Home from "./Home";
-import { routes } from "./routes";
-export { Home, routes };
+import AppletWrapper from "./AppletWrapper";
+import { appletRoutes, homeRoute } from "./routes";
+export { Home, appletRoutes, homeRoute, AppletWrapper };
