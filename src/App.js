@@ -36,7 +36,11 @@ class App extends Component<Props> {
 										key={index + 1}
 										path={route.path}
 										exact={route.exact || false}
-										render={() => <AppletWrapper applet={route.main} />}
+										render={() => (
+											<AppletWrapper>
+												<route.main />
+											</AppletWrapper>
+										)}
 									/>
 								))}
 							</div>

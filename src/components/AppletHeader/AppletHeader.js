@@ -7,7 +7,7 @@ import './AppletHeader.css'
 function AppletHeader() {
 	return (
 		<div className="AppletHeader">
-			<TextButton route={homeRoute} text="Return to applets list" />
+			<TextButton route={homeRoute} type="link" text="Return to applets list" />
 		</div>
 	)
 }

@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { AppletHeader } from '../../components'
 
 type Props = {
-	applet: Component,
+	children: React$Node,
 }
 function AppletWrapper(props: Props) {
 	return (
 		<div>
 			<AppletHeader />
-			<props.applet />
+			{props.children}
 		</div>
 	)
 }

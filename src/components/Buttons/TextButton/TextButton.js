@@ -5,17 +5,27 @@ import React from 'react'
 
 import type { MathRoute } from '../../../models/routeTypes'
 
-type Props = {
-	route?: MathRoute,
+type LinkType = {
+	type: 'link',
+	route: MathRoute,
+	text: string,
+}
+
+type NormalType = {
+	type: 'normal',
 	onClick: () => void,
 	text: string,
 }
+
+type Props = NormalType | LinkType
+
 function TextButton(props: Props) {
-	if (props.route !== undefined) {
+	if (props.type === 'link') {
+		const route: MathRoute = props.route
 		return (
 			<div className="TextButtonContainer">
-				<Link to={props.route.path} key={props.route.path}>
-					<div className="TextButton">{props.text ? props.text : props.route.name}</div>
+				<Link to={route.path} key={route.path}>
+					<div className="TextButton">{props.text ? props.text : route.name}</div>
 				</Link>
 			</div>
 		)

@@ -47,7 +47,7 @@ export default class Home extends Component<Props, State> {
 				{this.state.filter !== '' ? (
 					<div className="Home-filter-indicator">
 						<h3>{this.state.filter}</h3>
-						<TextButton text="Remove filter" onClick={this.clearFilter} />
+						<TextButton type="normal" text="Remove filter" onClick={this.clearFilter} />
 					</div>
 				) : (
 					''
