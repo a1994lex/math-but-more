@@ -4,8 +4,8 @@ import React from "react";
 
 function Card(props) {
   return (
-    <div className="CardContainer">
-      <div className="Card">
+    <div className="card-container">
+      <div className="card">
         {props.children}
       </div>
     </div>
