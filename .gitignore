@@ -20,6 +20,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+src/**/*.css
+src/**/*.css.map
+
+
 # Class Documents
 /docs
-

@@ -11,5 +11,6 @@
 
 [options]
 all=true
+module.name_mapper='\(*\).css' -> '\1.less'
 
 [strict]
