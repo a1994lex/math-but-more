@@ -4,14 +4,12 @@
   background-color: gray;
   padding: 10px 20px;
 }
-
-.side-link {
+.Sidebar .side-link {
   font-size: 18px;
   padding: 20px;
   font-style: normal;
 }
-
-.side-link:hover {
+.Sidebar .side-link:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: #00206f;
 }

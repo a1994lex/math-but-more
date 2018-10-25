@@ -8,7 +8,7 @@ import store from "./store";
 
 // import Tooltip from "react-portal-tooltip";
 
-import "./App.css";
+import './main.css'
 
 // TODO: Set up Redux store inside the store folder in src/
 // TODO: Set up Less and add  *.css to the .gitingnore
