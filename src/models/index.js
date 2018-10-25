@@ -1,1 +1,1 @@
-export  * from './routeTypes'
+export * from './routeTypes'

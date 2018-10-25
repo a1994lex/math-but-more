@@ -1,2 +1,2 @@
-import AppletHeader from "./AppletHeader";
-export default AppletHeader;
+import AppletHeader from './AppletHeader'
+export default AppletHeader

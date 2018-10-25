@@ -1,2 +1,2 @@
-import RobotMaze from "./RobotMaze";
-export default RobotMaze;
+import RobotMaze from './RobotMaze'
+export default RobotMaze

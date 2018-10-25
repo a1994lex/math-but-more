@@ -1,2 +1,2 @@
-import AppletWrapper from "./AppletWrapper";
-export default AppletWrapper;
+import AppletWrapper from './AppletWrapper'
+export default AppletWrapper

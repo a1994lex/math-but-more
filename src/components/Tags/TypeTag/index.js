@@ -1,2 +1,2 @@
-import TypeTag from "./TypeTag";
-export default TypeTag;
+import TypeTag from './TypeTag'
+export default TypeTag

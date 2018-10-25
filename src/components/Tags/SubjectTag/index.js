@@ -1,2 +1,2 @@
-import SubjectTag from "./SubjectTag";
-export default SubjectTag;
+import SubjectTag from './SubjectTag'
+export default SubjectTag

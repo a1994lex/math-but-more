@@ -1,4 +1,4 @@
-import AppletCard from './AppletCard';
+import AppletCard from './AppletCard'
 
-import Card from "./Card";
-export { Card, AppletCard };
+import Card from './Card'
+export { Card, AppletCard }

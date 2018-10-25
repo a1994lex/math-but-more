@@ -1,2 +1,2 @@
-import WordProblems from "./WordProblems";
-export default WordProblems;
+import WordProblems from './WordProblems'
+export default WordProblems

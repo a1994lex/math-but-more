@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import { appletRoutes, Home, homeRoute, AppletWrapper } from "./routes";
-import { Header } from "./components";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import { Provider, connect } from "react-redux";
-import store from "./store";
+import React, { Component } from 'react'
+import { appletRoutes, Home, homeRoute, AppletWrapper } from './routes'
+import { Header } from './components'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider, connect } from 'react-redux'
+import store from './store'
 
 // import Tooltip from "react-portal-tooltip";
 
-import "./App.css";
+import './App.css'
 
 // TODO: Set up Redux store inside the store folder in src/
 // TODO: Set up Less and add  *.css to the .gitingnore
@@ -16,61 +15,56 @@ import "./App.css";
 // TODO: Configure production site
 
 type Props = {
-  showTooltip: boolean,
-  tooltipParent: string,
-  tooltipContent: React$Component<*>,
-  tooltipPosition: ?string
-};
+	showTooltip: boolean,
+	tooltipParent: string,
+	tooltipContent: React$Component<*>,
+	tooltipPosition: ?string,
+}
 
 class App extends Component<Props> {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Header />
-          <div className="layout-column">
-            <div className="main-content">
-              <Route
-                key={0}
-                path={homeRoute.path}
-                exact={true}
-                component={Home}
-              />
-              <div>
-                {appletRoutes.map((route, index) => (
-                  <Route
-                    key={index+1}
-                    path={route.path}
-                    exact={route.exact || false}
-                    render={() => <AppletWrapper applet={route.main}/>}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Router>
-    );
-  }
+	render() {
+		return (
+			<Router>
+				<div className="App">
+					<Header />
+					<div className="layout-column">
+						<div className="main-content">
+							<Route key={0} path={homeRoute.path} exact={true} component={Home} />
+							<div>
+								{appletRoutes.map((route, index) => (
+									<Route
+										key={index + 1}
+										path={route.path}
+										exact={route.exact || false}
+										render={() => <AppletWrapper applet={route.main} />}
+									/>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
+			</Router>
+		)
+	}
 }
 
 function mapStateToProps(state) {
-  return {
-    showTooltip: state.tools.tooltip.isActive,
-    tooltipParent: state.tools.tooltip.parent,
-    tooltipContent: state.tools.tooltip.content,
-    tooltipPosition: state.tools.tooltip.position
-  };
+	return {
+		showTooltip: state.tools.tooltip.isActive,
+		tooltipParent: state.tools.tooltip.parent,
+		tooltipContent: state.tools.tooltip.content,
+		tooltipPosition: state.tools.tooltip.position,
+	}
 }
 
-const ConnectedApp = connect(mapStateToProps)(App);
+const ConnectedApp = connect(mapStateToProps)(App)
 
 export default class AppWrappedInProvider extends Component<void> {
-  render() {
-    return (
-      <Provider store={store}>
-        <ConnectedApp />
-      </Provider>
-    );
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<ConnectedApp />
+			</Provider>
+		)
+	}
 }

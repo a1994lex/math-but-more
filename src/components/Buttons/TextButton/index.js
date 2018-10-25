@@ -1,2 +1,2 @@
-import TextButton from "./TextButton";
-export default TextButton;
+import TextButton from './TextButton'
+export default TextButton

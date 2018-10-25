@@ -1,2 +1,2 @@
-import PrimaryButton from "./PrimaryButton";
-export default PrimaryButton;
+import PrimaryButton from './PrimaryButton'
+export default PrimaryButton

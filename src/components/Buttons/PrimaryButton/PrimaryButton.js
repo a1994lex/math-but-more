@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react'
 
-import "./PrimaryButton.css";
+import './PrimaryButton.css'
 
 type Props = {
-   onClick: ()=>void,
-   text: string,
+	onClick: () => void,
+	text: string,
 }
-function PrimaryButton( props:Props ) {
-  return (
-    <div className="PrimaryButtonContainer">
-      <div className="PrimaryButton" onClick={props.onClick}>
-        {props.text}
-      </div>
-    </div>
-  );
+function PrimaryButton(props: Props) {
+	return (
+		<div className="PrimaryButtonContainer">
+			<div className="PrimaryButton" onClick={props.onClick}>
+				{props.text}
+			</div>
+		</div>
+	)
 }
 
-export default PrimaryButton;
+export default PrimaryButton

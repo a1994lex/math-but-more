@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-type Props = {};
+type Props = {}
 
 export default class RobotMaze extends Component<Props> {
-  render() {
-    return <div className="RobotMaze">RobotMaze</div>;
-  }
+	render() {
+		return <div className="RobotMaze">RobotMaze</div>
+	}
 }
