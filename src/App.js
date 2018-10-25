@@ -9,9 +9,6 @@ import store from './store'
 
 import './main.css'
 
-// TODO: Set up Redux store inside the store folder in src/
-// TODO: Set up Less and add  *.css to the .gitingnore
-// TODO: Use Tooltip as a redux example in App.js component
 // TODO: Configure production site
 
 type Props = {
