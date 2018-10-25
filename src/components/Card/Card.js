@@ -7,8 +7,8 @@ type Props = {
 
 function Card(props: Props) {
 	return (
-		<div className="CardContainer">
-			<div className="Card">{props.children}</div>
+		<div className="card-container">
+			<div className="card">{props.children}</div>
 		</div>
 	)
 }
