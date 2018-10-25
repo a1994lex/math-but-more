@@ -4,7 +4,6 @@ import type { Action, ActionSubclass } from './types'
 import type { ReduxStore } from './rootReducer'
 import type { Store, Reducer } from 'redux'
 
-
 const store: Store<ReduxStore, Action> = createStore(createRootReducer())
 
 const storeWithDynamicReducers = {

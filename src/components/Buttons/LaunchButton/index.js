@@ -1,2 +1,2 @@
-import LaunchButton from "./LaunchButton";
-export default LaunchButton;
+import LaunchButton from './LaunchButton'
+export default LaunchButton

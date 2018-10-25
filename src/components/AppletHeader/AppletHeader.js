@@ -1,15 +1,15 @@
-import React from "react";
-import { homeRoute } from "../../routes";
-import { TextButton } from "../Buttons";
+import React from 'react'
+import { homeRoute } from '../../routes'
+import { TextButton } from '../Buttons'
 
-import "./AppletHeader.css";
+import './AppletHeader.css'
 
 function AppletHeader() {
-  return (
-    <div className="AppletHeader">
-      <TextButton route={homeRoute} text="Return to applets list" />
-    </div>
-  );
+	return (
+		<div className="AppletHeader">
+			<TextButton route={homeRoute} type="link" text="Return to applets list" />
+		</div>
+	)
 }
 
-export default AppletHeader;
+export default AppletHeader

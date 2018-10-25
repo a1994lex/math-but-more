@@ -1,22 +1,19 @@
-import React from "react";
+import React from 'react'
 
-import "./SubjectTag.css";
+import './SubjectTag.css'
 
 type Props = {
-   onClick: subject => void,
-   subject: string,
+	onClick: string => void,
+	subject: string,
 }
-function SubjectTag( props:Props ) {
-    return (
-      <div className="SubjectTagContainer">
-        <div
-          className="SubjectTag"
-          onClick={() => props.onClick(props.subject)}
-        >
-          Subject: {props.subject}
-        </div>
-      </div>
-    );
+function SubjectTag(props: Props) {
+	return (
+		<div className="SubjectTagContainer">
+			<div className="SubjectTag" onClick={() => props.onClick(props.subject)}>
+				Subject: {props.subject}
+			</div>
+		</div>
+	)
 }
 
-export default SubjectTag;
+export default SubjectTag

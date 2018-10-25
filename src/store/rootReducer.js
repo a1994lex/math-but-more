@@ -3,10 +3,7 @@ import toolsReducer from './tools/toolStore'
 
 import type { Reducer } from 'redux'
 import type { Action } from './types'
-import type {
-    ToolStore
-} from './types'
-
+import type { ToolStore } from './types'
 
 export type ReduxStore = {
 	tools: ToolStore,

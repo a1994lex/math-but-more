@@ -1,0 +1,28 @@
+{
+	"extends": ["strongloop", "prettier", "plugin:react/recommended"],
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"env": {
+		"es6": true,
+		"browser": true,
+		"jest": true
+	},
+	"plugins": ["flowtype", "prettier", "react"],
+  "globals": {
+		"Class": false,
+    "React$Component": false,
+    "React$Fragment": false,
+		"React$Node": false,
+		"ReactObjRef": false
+  },
+	"rules": {
+		"semi": "off",
+		"indent": "off",
+		"max-len": "off",
+		"prettier/prettier": "error"
+	}
+}

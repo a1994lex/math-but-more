@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import { AppletHeader } from "../../components";
+import React from 'react'
+import { AppletHeader } from '../../components'
 
 type Props = {
-    applet: Component
+	children: React$Node,
 }
-function AppletWrapper( props:Props ) {
-        return (<div>
-            <AppletHeader />
-            <props.applet/>
-        </div>)
+function AppletWrapper(props: Props) {
+	return (
+		<div>
+			<AppletHeader />
+			{props.children}
+		</div>
+	)
 }
 
-export default AppletWrapper;
+export default AppletWrapper

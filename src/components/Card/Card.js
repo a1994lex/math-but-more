@@ -1,15 +1,16 @@
-import "./Card.css";
+import './Card.css'
 
-import React from "react";
-
-function Card(props) {
-  return (
-    <div className="card-container">
-      <div className="card">
-        {props.children}
-      </div>
-    </div>
-  );
+import React from 'react'
+type Props = {
+	children: React$Node,
 }
 
-export default Card;
+function Card(props: Props) {
+	return (
+		<div className="card-container">
+			<div className="card">{props.children}</div>
+		</div>
+	)
+}
+
+export default Card

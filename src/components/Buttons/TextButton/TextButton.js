@@ -1,35 +1,43 @@
-import "./TextButton.css";
+import './TextButton.css'
 
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link } from 'react-router-dom'
+import React from 'react'
 
-import type { MathRoute } from '../../../models/routeTypes';
+import type { MathRoute } from '../../../models/routeTypes'
 
-type Props = {
-   route?: MathRoute,
-   onClick: ()=>void,
-   text: string,
-}
-function TextButton( props:Props) {
-  if (props.route !== undefined) {
-    return (
-      <div className="TextButtonContainer">
-        <Link to={props.route.path} key={props.route.path}>
-          <div className="TextButton">
-            {props.text ? props.text : props.route.name}
-          </div>
-        </Link>
-      </div>
-    );
-  } else {
-    return (
-      <div className="TextButtonContainer">
-        <div className="TextButton" onClick={props.onClick}>
-          {props.text}
-        </div>
-      </div>
-    );
-  }
+type LinkType = {
+	type: 'link',
+	route: MathRoute,
+	text: string,
 }
 
-export default TextButton;
+type NormalType = {
+	type: 'normal',
+	onClick: () => void,
+	text: string,
+}
+
+type Props = NormalType | LinkType
+
+function TextButton(props: Props) {
+	if (props.type === 'link') {
+		const route: MathRoute = props.route
+		return (
+			<div className="TextButtonContainer">
+				<Link to={route.path} key={route.path}>
+					<div className="TextButton">{props.text ? props.text : route.name}</div>
+				</Link>
+			</div>
+		)
+	} else {
+		return (
+			<div className="TextButtonContainer">
+				<div className="TextButton" onClick={props.onClick}>
+					{props.text}
+				</div>
+			</div>
+		)
+	}
+}
+
+export default TextButton
