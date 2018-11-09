@@ -2,9 +2,11 @@
 /* eslint no-restricted-globals: ["off", "location"] */
 import type { MathRoute } from '../../models/routeTypes'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
 import { withRouter } from 'react-router'
-import { appletRoutes } from '../../routes/index'
+import { appletRoutes, homeRoute } from '../../routes/index'
+
 type Props = {
 	location: Object,
 }
@@ -23,7 +25,9 @@ class Header extends Component<Props> {
 		return (
 			<div className="Header">
 				<div className="layout-row">
-					<h3>Math But More</h3>
+					<Link to={homeRoute.path}>
+						<h3>Math But More</h3>
+					</Link>
 					{title && (
 						<React.Fragment>
 							<h3> | </h3>
