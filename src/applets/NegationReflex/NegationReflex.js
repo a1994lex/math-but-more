@@ -18,7 +18,7 @@ export default class NegationReflex extends Component<Props> {
 		if (this.state.value === 'Press Submit to Start') {
 			this.setState({ value: '' })
 			this.createProblem()
-		} else if (this.state.value == this.state.answer) {
+		} else if (this.state.value === this.state.answer) {
 			alert(this.state.value + ' is correct! well done.')
 		} else {
 			alert(this.state.value + ' is incorrect, try again.')
