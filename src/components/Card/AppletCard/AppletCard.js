@@ -2,30 +2,35 @@ import React from 'react'
 
 import { Card } from '..'
 import { LaunchButton, SubjectTag, TypeTag } from '../..'
-import type { MathRoute } from '../../../models/routeTypes'
+import type { MathApplet } from '../../../models/routeTypes'
 
 import './AppletCard.css'
 
 type Props = {
-	route: MathRoute,
+	applet: MathApplet,
 	onSubjectClick: string => void,
 	onTypeClick: string => void,
 }
 function AppletCard(props: Props) {
-	// TODO: use actual description, thumbnail, and tags
 	return (
 		<Card>
-			<p className="AppletCard-title">{props.route.name}</p>
+			<p className="AppletCard-title">{props.applet.route.name}</p>
 			<div className="AppletCard-desc-and-thumb">
-				<img src={props.route.image} alt={props.route.name} className="AppletCard-thumb" />
-				<div className="AppletCard-desc">{props.route.description}</div>
+				<img src={props.applet.image} alt={props.applet.route.name} className="AppletCard-thumb" />
+				<div className="AppletCard-desc">{props.applet.description}</div>
 			</div>
 			<div className="AppletCard-button-and-tags">
 				<div className="AppletCard-tags">
-					<TypeTag type={props.route.type} onClick={props.onTypeClick} />
-					<SubjectTag subject={props.route.subject} onClick={props.onSubjectClick} />
+					<TypeTag type={props.applet.type} onClick={props.onTypeClick} />
+					{props.applet.subjects.map(subject => (
+						<SubjectTag
+							key={subject + 'subjectkey'}
+							subject={subject}
+							onClick={props.onSubjectClick}
+						/>
+					))}
 				</div>
-				<LaunchButton route={props.route} />
+				<LaunchButton route={props.applet.route} />
 			</div>
 		</Card>
 	)

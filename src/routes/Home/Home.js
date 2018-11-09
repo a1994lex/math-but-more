@@ -1,13 +1,13 @@
 import './Home.css'
 
 import React, { Component } from 'react'
-import type { MathRoute } from '../../models/routeTypes'
+import type { MathApplet } from '../../models/routeTypes'
 import { AppletCard, TextButton } from '../../components'
-import { appletRoutes } from '../routes'
+import { applets } from '../routes'
 
 type Props = {}
 type State = {
-	routes: MathRoute[],
+	applets: MathApplet[],
 	filter: string,
 }
 
@@ -15,28 +15,28 @@ export default class Home extends Component<Props, State> {
 	constructor() {
 		super()
 		this.state = {
-			routes: appletRoutes,
+			applets: applets,
 			filter: '',
 		}
 	}
 
 	clearFilter = () => {
 		this.setState({
-			routes: appletRoutes,
+			applets: applets,
 			filter: '',
 		})
 	}
 
 	filterByType = (type: string) => {
 		this.setState({
-			routes: appletRoutes.filter(route => route.type === type),
+			applets: applets.filter(applet => applet.type === type),
 			filter: 'Type: ' + type,
 		})
 	}
 
 	filterBySubject = (subject: string) => {
 		this.setState({
-			routes: appletRoutes.filter(route => route.subject === subject),
+			applets: applets.filter(applet => applet.subjects.includes(subject)),
 			filter: 'Subject: ' + subject,
 		})
 	}
@@ -52,12 +52,12 @@ export default class Home extends Component<Props, State> {
 				) : (
 					''
 				)}
-				{this.state.routes.map((route: MathRoute) => (
+				{this.state.applets.map((applet: MathApplet) => (
 					<AppletCard
-						key={route.name}
+						key={applet.route.name}
 						onSubjectClick={this.filterBySubject}
 						onTypeClick={this.filterByType}
-						route={route}
+						applet={applet}
 					/>
 				))}
 			</div>
