@@ -1,4 +1,3 @@
-import Home from './Home'
 import {
 	Angles,
 	Homography,
@@ -7,8 +6,8 @@ import {
 	WordProblems,
 	NegationReflex,
 } from './../applets'
-
 import type { MathRoute } from '../models'
+import Home from './Home'
 
 export const homeRoute: MathRoute = {
 	path: '/',
