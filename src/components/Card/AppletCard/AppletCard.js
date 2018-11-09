@@ -15,7 +15,7 @@ function AppletCard(props: Props) {
 	// TODO: use actual description, thumbnail, and tags
 	return (
 		<Card>
-			<h3>{props.route.name}</h3>
+			<p className="AppletCard-title">{props.route.name}</p>
 			<div className="AppletCard-desc-and-thumb">
 				<img src={props.route.image} alt={props.route.name} className="AppletCard-thumb" />
 				<div className="AppletCard-desc">{props.route.description}</div>
