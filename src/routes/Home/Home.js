@@ -29,14 +29,14 @@ export default class Home extends Component<Props, State> {
 
 	filterByType = (type: string) => {
 		this.setState({
-			routes: appletRoutes.filter(route => route.name === type),
+			routes: appletRoutes.filter(route => route.type === type),
 			filter: 'Type: ' + type,
 		})
 	}
 
 	filterBySubject = (subject: string) => {
 		this.setState({
-			routes: appletRoutes.filter(route => route.name === subject),
+			routes: appletRoutes.filter(route => route.subject === subject),
 			filter: 'Subject: ' + subject,
 		})
 	}
