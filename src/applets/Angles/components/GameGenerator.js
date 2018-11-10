@@ -50,7 +50,6 @@ export default class GameGenerator extends Component<Props, State> {
 				currentLocation={this.state.playerLocation}
 				radius={this.state.playerRadius}
 				percentage={this.state.playerDegree / CIRCLE_DEGREES}
-				// updateLocation={(x, y) => this.setState({ playerLocation: { x: x, y: y } })}
 			/>
 		)
 	}
