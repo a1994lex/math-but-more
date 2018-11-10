@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 
 import { showTooltip, hideTooltip } from '../../store/tools'
 
+import { GameGenerator, ProblemPrompt } from './components'
+
+import './Angles.css'
+
 type Props = {
 	showTooltip: Function,
 	hideTooltip: Function,
@@ -12,14 +16,8 @@ class Angles extends Component<Props> {
 	render() {
 		return (
 			<div className="Angles">
-				<button
-					id={'button'}
-					onClick={() => {
-						this.props.showTooltip('test', '#button')
-						setTimeout(() => this.props.hideTooltip(), 2000)
-					}}>
-					Hey
-				</button>
+				<ProblemPrompt />
+				<GameGenerator />
 			</div>
 		)
 	}

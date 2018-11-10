@@ -23,25 +23,21 @@ class App extends Component<Props> {
 		return (
 			<Router>
 				<div className="App">
-					<Header />
-					<div className="layout-column">
-						<div className="main-content">
-							<Route key={0} path={homeRoute.path} exact={true} component={Home} />
-							<div>
-								{appletRoutes.map((route, index) => (
-									<Route
-										key={index + 1}
-										path={route.path}
-										exact={route.exact || false}
-										render={() => (
-											<AppletWrapper>
-												<route.main />
-											</AppletWrapper>
-										)}
-									/>
-								))}
-							</div>
-						</div>
+					<Header title />
+					<div className="main-content">
+						<Route key={0} path={homeRoute.path} exact={true} component={Home} />
+						{appletRoutes.map((route, index) => (
+							<Route
+								key={index + 1}
+								path={route.path}
+								exact={route.exact || false}
+								render={() => (
+									<AppletWrapper>
+										<route.main />
+									</AppletWrapper>
+								)}
+							/>
+						))}
 					</div>
 				</div>
 			</Router>
