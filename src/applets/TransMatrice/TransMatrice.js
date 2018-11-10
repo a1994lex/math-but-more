@@ -33,7 +33,7 @@ export default class TransMatrice extends Component<Props> {
 			tx: this.state.transx,
 			ty: this.state.transy,
 			r: this.state.rot,
-			s: this.state.s,
+			s: this.state.scale,
 		})
 		event.preventDefault()
 	}
