@@ -1,21 +1,23 @@
+@import '../../../variables.less';
+
 .Accent1ButtonContainer {
   padding: 6px 6px;
 }
 
 .Accent1Button {
-  background: -moz-linear-gradient(top, #aaff66 35%, #a2f260 80%);
-  background: -webkit-linear-gradient(top, #aaff66 35%, #a2f260 80%);
-  background: -o-linear-gradient(top, #aaff66 35%, #a2f260 80%);
-  background: -ms-linear-gradient(top, #aaff66 35%, #a2f260 80%);
-  background: linear-gradient(to bottom, #aaff66 35%, #a2f260 80%);
-  background-color: #aaff66;
+  background: -moz-linear-gradient(top, @accent1-color 35%, @accent1-color-med 80%);
+  background: -webkit-linear-gradient(top, @accent1-color 35%, @accent1-color-med 80%);
+  background: -o-linear-gradient(top, @accent1-color 35%, @accent1-color-med 80%);
+  background: -ms-linear-gradient(top, @accent1-color 35%, @accent1-color-med 80%);
+  background: linear-gradient(to bottom, @accent1-color 35%, @accent1-color-med 80%);
+  background-color: @accent1-color;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   display: inline-block;
   user-select: none;
   cursor: pointer;
-  color: black;
+  color: @accent1-color-text;
   font-family: Arial;
   font-size: 14px;
   font-weight: bold;
