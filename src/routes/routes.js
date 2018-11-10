@@ -1,4 +1,3 @@
-import Home from './Home'
 import {
 	Angles,
 	Homography,
@@ -8,7 +7,16 @@ import {
 	NegationReflex,
 } from './../applets'
 
-import type { MathRoute } from '../models'
+import Home from './Home'
+
+import type { MathRoute, MathApplet } from '../models'
+
+import anglesImage from '../logo.svg'
+import homographyImage from '../logo.svg'
+import robotmazeImage from '../logo.svg'
+import wordproblemsImage from '../logo.svg'
+import transformationsImage from '../logo.svg'
+import negationImage from '../logo.svg'
 
 export const homeRoute: MathRoute = {
 	path: '/',
@@ -17,35 +25,73 @@ export const homeRoute: MathRoute = {
 	name: 'Home',
 }
 
-export const appletRoutes: MathRoute[] = [
+export const applets: MathApplet[] = [
 	{
-		path: '/angles.yum',
-		main: Angles,
-		name: 'Angles.yum',
+		route: {
+			path: '/angles.yum',
+			main: Angles,
+			name: 'Angles.yum',
+		},
+		description: 'Eat angles to get the correct measurement',
+		type: 'game',
+		subjects: ['angles', 'arithmetic'],
+		image: anglesImage,
 	},
 	{
-		path: '/homography',
-		main: Homography,
-		name: 'Homography',
+		route: {
+			path: '/homography',
+			main: Homography,
+			name: 'Homography',
+		},
+		description: 'Explore how computer vision uses homography to identify shapes',
+		type: 'demo',
+		subjects: ['homography'],
+		image: homographyImage,
 	},
 	{
-		path: '/robotmaze',
-		main: RobotMaze,
-		name: 'Robot Maze',
+		route: {
+			path: '/robotmaze',
+			main: RobotMaze,
+			name: 'Robot Maze',
+		},
+		description: 'Help a robot make it through a maze',
+		type: 'game',
+		subjects: ['coding', 'integers', 'arithmetic'],
+		image: robotmazeImage,
 	},
 	{
-		path: '/transitions',
-		main: TransMatrice,
-		name: 'Translation Matrix',
+		route: {
+			path: '/transitions',
+			main: TransMatrice,
+			name: 'Translation Matrix',
+		},
+		description: 'Explore how matrices are used to transform shapes in computer graphics',
+		type: 'demo',
+		subjects: ['matrices'],
+		image: transformationsImage,
 	},
 	{
-		path: '/word-problems',
-		main: WordProblems,
-		name: 'Word Problems',
+		route: {
+			path: '/word-problems',
+			main: WordProblems,
+			name: 'Word Problems',
+		},
+		description: 'Solve word problems involving algebra and trigonometry concepts',
+		type: 'game',
+		subjects: ['trigonometry', 'algebra'],
+		image: wordproblemsImage,
 	},
 	{
-		path: '/negationreflex',
-		main: NegationReflex,
-		name: 'Negation Reflex',
+		route: {
+			path: '/negationreflex',
+			main: NegationReflex,
+			name: 'Negation Reflex',
+		},
+		description: 'Practice adding and subtracting with negative numbers',
+		type: 'game',
+		subjects: ['negation', 'arithmetic'],
+		image: negationImage,
 	},
 ]
+
+export const appletRoutes = applets.map(applet => applet.route)
