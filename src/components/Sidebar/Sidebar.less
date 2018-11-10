@@ -1,7 +1,9 @@
+@import '../../../variables.less';
+
 .Sidebar {
   width: 225px;
   min-height: 100vh;
-  background-color: gray;
+  background-color: @sidebar-color;
   padding: 10px 20px;
 
   .side-link {
@@ -11,7 +13,7 @@
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.5);
-      color: #00206f;
+      color: @primary-color-dark;
     }
   }
 }
