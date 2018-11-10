@@ -30,7 +30,6 @@ export default class GameGenerator extends Component<Props, State> {
 	}
 
 	render() {
-		const poly = this.getPlayerPolygon()
 		return (
 			<GameBoard
 				updateScreenSize={(w, h) => {
