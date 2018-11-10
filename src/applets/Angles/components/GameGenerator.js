@@ -40,13 +40,6 @@ export default class GameGenerator extends Component<Props, State> {
 				triggerDirectionChange={this.triggerDirectionChange}>
 				{this.renderPlayer()}
 				{this.renderTokens()}
-				{poly && (
-					<g>
-						{poly.map((point: Location) => {
-							return <circle key={`${point.x}_${point.y}`} cx={point.x} cy={point.y} r={2} />
-						})}
-					</g>
-				)}
 			</GameBoard>
 		)
 	}

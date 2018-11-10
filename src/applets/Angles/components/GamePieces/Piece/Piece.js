@@ -31,8 +31,6 @@ export default class Piece extends Component<Props, State> {
 				<foreignObject
 					x={token.point.x}
 					y={token.point.y}
-					width={10}
-					height={10}
 					className={`${this.state.vanishing ? 'vanishOut' : ''}`}>
 					<div
 						xmlns="http://www.w3.org/1999/xhtml"
