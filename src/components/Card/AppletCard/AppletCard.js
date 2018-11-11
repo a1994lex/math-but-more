@@ -16,7 +16,12 @@ function AppletCard(props: Props) {
 		<Card>
 			<p className="AppletCard-title">{props.applet.route.name}</p>
 			<div className="AppletCard-desc-and-thumb">
-				<img src={props.applet.image} alt={props.applet.route.name} className="AppletCard-thumb" />
+				<img
+					src={props.applet.image}
+					alt={props.applet.route.name}
+					style={{ height: '15vh', width: 'auto' }}
+					className="AppletCard-thumb"
+				/>
 				<div className="AppletCard-desc">{props.applet.description}</div>
 			</div>
 			<div className="AppletCard-button-and-tags">
