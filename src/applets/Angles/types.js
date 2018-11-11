@@ -11,7 +11,7 @@ export type Degree = {
 export type Radian = {
 	type: 'radian',
 	numerator: number,
-	denomenator: number,
+	denominator: number,
 }
 
 export type TokenValue = Radian | Degree

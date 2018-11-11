@@ -1,3 +1,5 @@
+@import './src/variables.less';
+
 .TextButtonContainer {
   padding: 6px 6px;
 }
@@ -5,7 +7,7 @@
   display: inline-block;
   user-select: none;
   cursor: pointer;
-  color: #00206f;
+  color: @primary-color;
   font-family: Arial;
   font-size: 14px;
   text-decoration: none;
@@ -13,7 +15,7 @@
   transition: 0.15s;
 }
 .TextButton:hover {
-  color: #00308f;
+  color: @primary-color-dark;
   text-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
 .TextButton:active {

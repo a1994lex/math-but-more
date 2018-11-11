@@ -24,9 +24,11 @@ export default class Piece extends Component<Props, State> {
 	}
 
 	renderRadian = (radian: Radian) => {
-		if (radian && radian.denomenator) {
+		if (radian) {
 			const { token } = this.props
-
+			const numeratorClass = `${
+				radian.denominator !== 1 && radian.denominator !== 0 ? 'numerator-underline' : ''
+			}`
 			return (
 				<foreignObject
 					x={token.point.x}
@@ -34,17 +36,29 @@ export default class Piece extends Component<Props, State> {
 					className={`${this.state.vanishing ? 'vanishOut' : ''}`}>
 					<div
 						xmlns="http://www.w3.org/1999/xhtml"
-						className={`fraction layout-column `}
+						className={`fraction`}
 						style={{ textAlign: 'center' }}>
-						<span className="numerator">
-							{radian.numerator}
-							&pi;
-						</span>
-						<div className="denominator">{radian.denomenator}</div>
+						{radian.numerator === 0 ? (
+							<span className={numeratorClass}>
+								{0}
+								&pi;
+							</span>
+						) : radian.numerator !== 1 ? (
+							<span className={numeratorClass}>
+								{radian.numerator}
+								&pi;
+							</span>
+						) : (
+							<span className={numeratorClass}>&pi;</span>
+						)}
+						<div className="denominator">
+							{radian.denominator !== 1 && radian.denominator !== 0 ? radian.denominator : ''}
+						</div>
 					</div>
 				</foreignObject>
 			)
 		}
+		return null
 	}
 	renderDegree = (degree: Degree) => {
 		const { token } = this.props

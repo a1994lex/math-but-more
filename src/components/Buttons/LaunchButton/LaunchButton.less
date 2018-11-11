@@ -1,21 +1,23 @@
+@import './src/variables.less';
+
 .LaunchButtonContainer {
   padding: 6px 6px;
 }
 
 .LaunchButton {
-  background: -moz-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
-  background: -webkit-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
-  background: -o-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
-  background: -ms-linear-gradient(top, #ffcc66 35%, #aaff66 80%);
-  background: linear-gradient(to bottom, #ffcc66 35%, #aaff66 80%);
-  background-color: #ffcc66;
+  background: -moz-linear-gradient(top, @accent2-color 35%, @accent1-color 80%);
+  background: -webkit-linear-gradient(top, @accent2-color 35%, @accent1-color 80%);
+  background: -o-linear-gradient(top, @accent2-color 35%, @accent1-color 80%);
+  background: -ms-linear-gradient(top, @accent2-color 35%, @accent1-color 80%);
+  background: linear-gradient(to bottom, @accent2-color 35%, @accent1-color 80%);
+  background-color: @accent2-color;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   display: inline-block;
   user-select: none;
   cursor: pointer;
-  color: #00206f;
+  color: @primary-color-dark;
   font-family: Arial;
   font-size: 16px;
   font-weight: bold;
