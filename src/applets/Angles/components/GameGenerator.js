@@ -4,8 +4,12 @@ import update from 'immutability-helper'
 import type { Token, TokenValue, Location } from '../types'
 import { generatePointInPolygon, random, forEachValue, isPointInPolygon } from '../helpers'
 import { Player, Piece } from './GamePieces'
-
-type Props = {}
+import { CIRCLE_DEGREES } from '../constants'
+type Props = {
+	updateTarget: (number, number) => void,
+	toggleUpdateTokens: () => void,
+	updateTokenState: boolean,
+}
 
 type State = {
 	tokens: ?{ [string]: Token },
@@ -15,17 +19,22 @@ type State = {
 	screenDimensions: { w: number, h: number },
 }
 
-const CIRCLE_DEGREES = 360
-
 export default class GameGenerator extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props)
 		this.state = {
 			tokens: null,
-			playerDegree: 30,
-			playerLocation: { x: 0, y: 0 },
+			playerDegree: 285,
+			playerLocation: { x: 160, y: 95 },
 			playerRadius: 30,
 			screenDimensions: { w: 0, h: 0 },
+		}
+	}
+
+	componentDidUpdate(prevProps: Props) {
+		if (!prevProps.updateTokenState && this.props.updateTokenState) {
+			this.generateTokens(this.state.screenDimensions.w, this.state.screenDimensions.h)
+			this.props.toggleUpdateTokens()
 		}
 	}
 
@@ -83,12 +92,13 @@ export default class GameGenerator extends Component<Props, State> {
 		if (value.type === 'degree') {
 			plusValue = value.degree
 		} else {
-			plusValue = ((value.numerator / value.denomenator) * 180) / Math.PI
+			plusValue = (((value.numerator * Math.PI) / value.denominator) * 180) / Math.PI
 		}
 		return (state.playerDegree += plusValue) % CIRCLE_DEGREES
 	}
 
 	generateTokens = (w: number, h: number) => {
+		if (!w || !h) return null
 		const tokens = {}
 		const polygon = [{ x: 0, y: 0 }, { x: 0, y: h }, { x: w, y: h }, { x: w, y: h }]
 		for (let i = 0; i < 12; i += 1) {
@@ -104,9 +114,18 @@ export default class GameGenerator extends Component<Props, State> {
 	}
 
 	getTokenValue(): TokenValue {
-		return {
-			type: 'degree',
-			degree: random(0, 180),
+		const degree: number = random(0, 1)
+		const angle = unitCircle[random(0, unitCircle.length - 1)]
+		if (degree === 1) {
+			return {
+				type: 'degree',
+				degree: angle.degree,
+			}
+		} else {
+			return {
+				type: 'radian',
+				...angle.radian,
+			}
 		}
 	}
 
@@ -116,8 +135,6 @@ export default class GameGenerator extends Component<Props, State> {
 			if (this.state.playerLocation && playerPolygon && this.state.tokens) {
 				forEachValue(this.state.tokens, (token: Token) => {
 					if (isPointInPolygon(token.point, playerPolygon)) {
-						console.log('point in polygon')
-
 						this.removeToken(token.id)
 					}
 				})
@@ -136,3 +153,23 @@ export default class GameGenerator extends Component<Props, State> {
 		]
 	}
 }
+
+const unitCircle: { degree: number, radian: { numerator: number, denominator: number } }[] = [
+	{ degree: 0, radian: { numerator: 0, denominator: 1 } },
+	{ degree: 30, radian: { numerator: 1, denominator: 6 } },
+	{ degree: 45, radian: { numerator: 1, denominator: 4 } },
+	{ degree: 60, radian: { numerator: 1, denominator: 3 } },
+	{ degree: 90, radian: { numerator: 1, denominator: 2 } },
+	{ degree: 120, radian: { numerator: 2, denominator: 3 } },
+	{ degree: 135, radian: { numerator: 3, denominator: 4 } },
+	{ degree: 150, radian: { numerator: 5, denominator: 6 } },
+	{ degree: 180, radian: { numerator: 1, denominator: 1 } },
+	{ degree: 210, radian: { numerator: 7, denominator: 6 } },
+	{ degree: 225, radian: { numerator: 5, denominator: 4 } },
+	{ degree: 240, radian: { numerator: 4, denominator: 3 } },
+	{ degree: 270, radian: { numerator: 3, denominator: 2 } },
+	{ degree: 300, radian: { numerator: 5, denominator: 3 } },
+	{ degree: 315, radian: { numerator: 7, denominator: 4 } },
+	{ degree: 330, radian: { numerator: 11, denominator: 6 } },
+	{ degree: 360, radian: { numerator: 2, denominator: 1 } },
+]
