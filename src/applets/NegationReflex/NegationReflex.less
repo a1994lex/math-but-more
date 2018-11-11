@@ -1,0 +1,51 @@
+.Title { grid-area: header; }
+.Instructions { grid-area: info; }
+.Main { grid-area: main; }
+.Controls { grid-area: ctrl; }
+.Timer { grid-area: timer; }
+.Accuracy  { grid-area: acc; }
+.RestartBttn { grid-area: bttn; }
+
+.WhiteSpace {
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.Main{
+    width: 35em;
+}
+.Outputgreen{
+    color: green;
+}
+.Outputred{
+    color: red;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'main main main main info'
+    'ctrl ctrl ctrl ctrl info';
+  grid-gap: 10px;
+  background-color: #04365f;
+  padding: 10px;
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+}
+.grid-container2 {
+    display: grid;
+    grid-template-areas:
+      'timer' 'acc' 'bttn';
+    background-color: #04365f;
+  }
+  .grid-container2 > span {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+  }
