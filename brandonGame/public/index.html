@@ -37,7 +37,7 @@
         var roboVector = [2];
         var roboVelocity = 0;
         
-
+        
         function setup() {
             robot = new PIXI.Sprite(
                 PIXI.loader.resources["images/roomba.png"].texture
@@ -48,14 +48,16 @@
             //robot.pivot.set(75, 75);
             robot.anchor.set(0.37,.38);
             robot.position.set(100,400);
-            robot.pivot.set(75, 75);
+            robot.pivot.set(98, 78); //image was irregular
             
             // render sprite to stage
             
-            addGridOverlay();
+
+            
             addPath();
 
             app.stage.addChild(robot);
+            addGridOverlay();
 
             roboVector[0] = 1;
             roboVector[1] = 0;
@@ -67,31 +69,148 @@
 
         }
 
+        var pathWidth = 140;
+
         function addPath() {
             
+
+            // path 1
+            
+            let line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(0, 400);
+            line.lineTo(400, 400);
+            // line.x = 0;
+            // line.y = 0;
+            app.stage.addChild(line);
+            // joint 1
+            let circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(400, 400, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+            //path 2
+
+            line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(400, 400);
+            line.lineTo(600, 200);
+            line.x = 0;
+            line.y = 0;
+            app.stage.addChild(line);
+            // joint 2
+            circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(600, 200, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+            // path 3
+
+            line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(600, 200);
+            line.lineTo(600, 800);
+            line.x = 0;
+            line.y = 0;
+            app.stage.addChild(line);
+            // joint 3
+            circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(600, 800, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+            // path 4
+
+            line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(600, 800);
+            line.lineTo(800, 800);
+            line.x = 0;
+            line.y = 0;
+            app.stage.addChild(line);
+            // joint 4
+            circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(800, 800, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+            // path 5
+
+            line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(800, 800);
+            line.lineTo(1100, 100);
+            line.x = 0;
+            line.y = 0;
+            app.stage.addChild(line);
+            // joint 5
+            circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(1100, 100, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+
+            // path 6
+
+            line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(1100, 100);
+            line.lineTo(1300, 100);
+            line.x = 0;
+            line.y = 0;
+            app.stage.addChild(line);
+            // joint 6
+            circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(1300, 100, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+            // path 7
+
+            line = new Graphics();
+            line.lineStyle(pathWidth, 0x494949, 1);
+            line.moveTo(1300, 100);
+            line.lineTo(1500, 400);
+            line.x = 0;
+            line.y = 0;
+            app.stage.addChild(line);
+            // joint 7
+            circle = new Graphics();
+            circle.beginFill(0x494949);
+            circle.drawCircle(1500, 400, pathWidth/2);
+            circle.endFill();
+            circle.x = 0;
+            circle.y = 0;
+            app.stage.addChild(circle);
+
+
             // goal space
             let rectangle = new Graphics();
             rectangle.lineStyle(0, 0x73c67b, 1);
             rectangle.beginFill(0x73c67b);
-            rectangle.drawRect(0, 0, 100, 100);
+            rectangle.drawRect(0, 0, pathWidth, pathWidth);
             rectangle.endFill();
-            rectangle.x = 1450;
-            rectangle.y = 350;
+            rectangle.x = 1500;
+            rectangle.y = 400 - pathWidth/2;
             app.stage.addChild(rectangle);
-            
-            
-            
-            let rectangle = new Graphics();
-            rectangle.lineStyle(0, 0x73c67b, 1);
-            rectangle.beginFill(0x73c67b);
-            rectangle.drawRect(0, 0, 100, 100);
-            rectangle.endFill();
-            rectangle.x = 1450;
-            rectangle.y = 350;
-            rectangle.rotation = ;
-            app.stage.addChild(rectangle);
-
-
 
         }
 
@@ -215,3 +334,20 @@
 
 </body>
 </html>
+
+<!-- Solution -->
+<!-- moveRobot(300,0,1);
+moveRobot(Math.sqrt(2) * 200, 45, 1);
+moveRobot(1200,-90,0.5);
+moveRobot(400, 0,0.5);
+
+var hypo = Math.sqrt(((700)*(700)) + ((300)*(300)));
+var angle = Math.asin(700 / hypo) * (180/Math.PI);
+moveRobot(hypo, angle, 1 );
+
+moveRobot(400, 0,0.5);
+
+
+hypo = Math.sqrt(((300)*(300)) + ((200)*(200)));
+angle = Math.asin(300 / hypo) * (180/Math.PI);
+moveRobot(hypo, -angle, 1 ); -->
