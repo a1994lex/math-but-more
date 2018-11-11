@@ -15,7 +15,7 @@ import anglesImage from '../logo.svg'
 import homographyImage from '../logo.svg'
 import robotmazeImage from '../logo.svg'
 import wordproblemsImage from '../logo.svg'
-import transformationsImage from '../logo.svg'
+import transformationsImage from '../assets/pacman.svg'
 import negationImage from '../logo.svg'
 
 export const homeRoute: MathRoute = {
