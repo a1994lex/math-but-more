@@ -16,7 +16,7 @@ import homographyImage from '../logo.svg'
 import robotmazeImage from '../logo.svg'
 import wordproblemsImage from '../logo.svg'
 import transformationsImage from '../assets/pacman.svg'
-import negationImage from '../logo.svg'
+import negation from '../assets/appletIcons/negation2.png'
 
 export const homeRoute: MathRoute = {
 	path: '/',
@@ -47,6 +47,7 @@ export const applets: MathApplet[] = [
 		type: 'demo',
 		subjects: ['homography'],
 		image: homographyImage,
+		dev: true,
 	},
 	{
 		route: {
@@ -80,6 +81,7 @@ export const applets: MathApplet[] = [
 		type: 'game',
 		subjects: ['trigonometry', 'algebra'],
 		image: wordproblemsImage,
+		dev: true,
 	},
 	{
 		route: {
@@ -90,7 +92,7 @@ export const applets: MathApplet[] = [
 		description: 'Practice adding and subtracting with negative numbers',
 		type: 'game',
 		subjects: ['negation', 'arithmetic'],
-		image: negationImage,
+		image: negation,
 	},
 ]
 
