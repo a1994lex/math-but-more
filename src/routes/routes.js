@@ -47,6 +47,7 @@ export const applets: MathApplet[] = [
 		type: 'demo',
 		subjects: ['homography'],
 		image: homographyImage,
+		dev: true,
 	},
 	{
 		route: {
@@ -80,6 +81,7 @@ export const applets: MathApplet[] = [
 		type: 'game',
 		subjects: ['trigonometry', 'algebra'],
 		image: wordproblemsImage,
+		dev: true,
 	},
 	{
 		route: {
