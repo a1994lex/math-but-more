@@ -13,7 +13,7 @@ import type { MathRoute, MathApplet } from '../models'
 
 import anglesImage from '../assets/appletIcons/anglesyum.png'
 import homographyImage from '../logo.svg'
-import robotmazeImage from '../logo.svg'
+import robotmazeImage from '../assets/appletIcons/roomba.png'
 import wordproblemsImage from '../logo.svg'
 import transformationsImage from '../assets/pacman.svg'
 import negation from '../assets/appletIcons/negation2.png'

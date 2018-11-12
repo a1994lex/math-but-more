@@ -4,6 +4,6 @@ type Props = {}
 
 export default class RobotMaze extends Component<Props> {
 	render() {
-		return <div className="RobotMaze">RobotMaze</div>
+		return <iframe className="RobotMaze" src="http://kylemarchbyu.com:8080/" width="90%" height="850"></iframe>
 	}
 }
