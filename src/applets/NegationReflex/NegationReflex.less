@@ -1,18 +1,28 @@
-.Title { grid-area: header; }
-.Instructions { grid-area: info; }
-.Main { grid-area: main; }
-.Controls { grid-area: ctrl; }
-.Timer { grid-area: timer; }
-.Accuracy  { grid-area: acc; }
-.RestartBttn { grid-area: bttn; }
-
-.WhiteSpace {
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
+body{
+  color: #1c0b7e;
+  h1, h2, h3, h4, h5, h6{
+    display:inline-block;
+  }
 }
-.Main{
-    width: 35em;
+
+.Applet{
+  width: 70%;
+  margin-right: 0px;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Instructions {
+  width: 50%;
+}
+.Score{
+  margin-right: 5em;
 }
 .Outputgreen{
     color: green;
@@ -20,32 +30,19 @@
 .Outputred{
     color: red;
 }
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'header header header header header'
-    'main main main main info'
-    'ctrl ctrl ctrl ctrl info';
-  grid-gap: 10px;
-  background-color: #04365f;
-  padding: 10px;
-}
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+.Main{
+  width: 100%;
   text-align: center;
-  padding: 20px 0;
-  font-size: 24px;
 }
-.grid-container2 {
-    display: grid;
-    grid-template-areas:
-      'timer' 'acc' 'bttn';
-    background-color: #04365f;
-  }
-  .grid-container2 > span {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px;
-    font-size: 24px;
-  }
+
+#inputBox{
+  height: 40px;
+  margin-left: 1em;
+  vertical-align:middle;
+  margin-bottom: 1em;
+}
+.Instructions > h5{
+  text-align: left;
+}
+
+
