@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import NegationApplet from './NegationApplet'
+import Accuracy from './Accuracy'
 
 type Props = {}
 
@@ -7,7 +9,7 @@ type State = {}
 export default class Timer extends Component<Props, State> {
 	constructor() {
 		super()
-		this.state = { time: {}, seconds: 30 }
+		this.state = { time: {}, seconds: 30, done: false }
 		this.timer = 0
 		this.startTimer = this.startTimer.bind(this)
 		this.countDown = this.countDown.bind(this)
@@ -53,6 +55,7 @@ export default class Timer extends Component<Props, State> {
 		// Check if we're at zero.
 		if (seconds === 0) {
 			clearInterval(this.timer)
+			this.setState({ done: true })
 		}
 	}
 
@@ -62,6 +65,7 @@ export default class Timer extends Component<Props, State> {
 				<h3>
 					Time remaining {this.state.time.h}:{this.state.time.m}:{this.state.time.s}
 				</h3>
+				{this.state.done ? <Accuracy /> : <NegationApplet seconds={this.state.seconds} />}
 			</span>
 		)
 	}

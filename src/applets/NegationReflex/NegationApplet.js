@@ -1,47 +1,59 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
+import Accuracy from './Accuracy'
 
-type Props = {}
+type props = {
+	seconds : number,
+}
 
 type State = {
-	value: string,
+	value: ?number,
 	answer: number,
 	x1: number,
 	x2: number,
 	correct: ?boolean,
+	finalValue: ?Number,
 }
 
-export default class NegationApplet extends Component<Props, State> {
-	constructor() {
-		super()
+export default class NegationApplet extends Component<props, State> {
+	constructor(props) {
+		super(props)
 		this.state = {
-			value: 'Press Submit to Start',
+			value: '',
 			answer: 0,
 			x1: 0,
 			x2: 0,
 			correct: null,
+			output: ''
 		}
 		this.handleChange = this.handleChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 	componentDidMount(prevProps) {
-		this.handleSubmit()
+		this.createProblem()
 	}
 
 	handleChange(event) {
 		this.setState({ value: event.target.value })
 	}
 
-	handleSubmit() {
-		if (this.state.value === 'Press Submit to Start') {
-			this.setState({ value: '' })
-			this.createProblem()
-		} else if (this.state.value === this.state.answer.toString()) {
-			this.setState({ correct: true })
-		} else {
-			this.setState({ correct: false })
+	handleSubmit(event) {
+		if(event)
+			event.preventDefault();
+
+		console.log("handle submit")
+		if(this.props.seconds !== 0)
+		{
+			if (this.state.value !== null) {
+				
+				if (this.state.value === this.state.answer.toString()) {
+					this.setState({correct: true, output: this.problemString() + this.outputString(true), value: ''  })
+				} else {
+					this.setState({ correct: false, output: this.problemString() + this.outputString(false), value: '' })
+				}
+				this.createProblem()
+			}
 		}
-		this.createProblem()
 	}
 
 	createProblem() {
@@ -58,30 +70,49 @@ export default class NegationApplet extends Component<Props, State> {
 		return this.state.x1 + ' - ' + this.state.x2 + ' = '
 	}
 
-	outputString() {
-		if (this.state.correct) {
-			return this.state.value + ' is correct! well done.'
-		} else if (this.state.correct === false) {
-			return this.state.value + ' is incorrect.'
-		} else {
-			return ''
+	timeUpString(){
+		if(this.props.seconds !== 0)
+		{
+			return ""
 		}
+		else{
+			return "Time's up. Refresh the page to play again."
+		}
+	}
+
+	outputString(correct) {
+		let outputstring = this.state.value
+
+		if (correct) {
+			outputstring += ' is correct!'
+			return outputstring
+		} 
+		else {
+			outputstring += ' is incorrect.'
+			return outputstring
+		} 
 	}
 
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-						<h1 id="problem">{this.problemString()}</h1>
+				<form onSubmit={this.handleSubmit} autoComplete="off">
+						<h1>{this.problemString()}</h1>
 						<input
 							type="text"
 							autoFocus={true}
 							value={this.state.value}
 							onChange={this.handleChange}
 							id = "inputBox"
+							autoComplete="off"
+							autoCorrect="off"
 						/>
 				</form>
-				<h5 className={`Output${this.state.correct ? 'green' : 'red'}`}>{this.outputString()}</h5>
+				<h5 className={`Output${this.state.correct ? 'green' : 'red'}`}>{this.state.output}</h5>
+				<div className="Score">
+					<Accuracy correct={this.state.correct} output={this.state.output}/>		
+				</div>
+				<div><h1 id="timeup">{this.timeUpString()}</h1></div>
 			</div>
 		)
 	}
