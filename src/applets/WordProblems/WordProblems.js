@@ -16,7 +16,6 @@ export default class WordProblems extends Component<Props> {
 	}
 
 	checkAnswer() {
-		console.log('Answer: ' + problems[this.state.questionNum].answer.apply(this, this.state.params))
 		if (
 			this.state.userAnswer ===
 			'' + problems[this.state.questionNum].answer.apply(this, this.state.params)
@@ -87,9 +86,6 @@ export default class WordProblems extends Component<Props> {
 						onKeyPress={e => {
 							if (e.which === 13) {
 								// Enter key
-								console.log(
-									this.state.answerIsCorrect ? 'Going to new question' : 'checking answer'
-								)
 								this.state.answerIsCorrect ? this.goToNewQuestion() : this.checkAnswer()
 							}
 						}}
