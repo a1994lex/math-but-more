@@ -81,7 +81,6 @@ export const applets: MathApplet[] = [
 		type: 'game',
 		subjects: ['trigonometry', 'algebra'],
 		image: wordproblemsImage,
-		dev: true,
 	},
 	{
 		route: {
