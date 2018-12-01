@@ -48,7 +48,7 @@ export default class WordProblems extends Component<Props> {
 		for (var p in paramRanges) {
 			let param = this.numberInRange(paramRanges[p][0], paramRanges[p][1])
 			params.push(param)
-			question = question.replace('%%' + p.toString() + '%%', param.toString())
+			question = question.replace('{' + p.toString() + '}', param.toString())
 		}
 
 		return {
