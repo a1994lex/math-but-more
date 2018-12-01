@@ -4,11 +4,9 @@
   height: 100%;
   display: flex;
   align-items: stretch;
-}
-
-.AppletWrapper-DrawerButton {
+  &-DrawerButton {
 	position: absolute;
-	top: 64px; /* Header Height*/
+	bottom: 0px;
 	right: 0px;
 	text-align: center;
 	user-select: none;
@@ -17,17 +15,26 @@
 	font-weight: bold;
 	min-width: 20px;
 	min-height: 20px;
+	margin: 10px;
+	margin-right: 26px;
 	border-radius: 10px;
-}
-
-.AppletWrapper-Instructions {
-	height: 100%; /* 100% Full-height */
-    overflow-x: hidden; /* Disable horizontal scroll */
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  &-Instructions {
+	height: 100%;
+	overflow-x: hidden;
 	max-width: 20%;
 	padding-left: 12px;
-}
-
-.AppletWrapper-Instructions.Closed {
-	width: 0; /* 0 width - change this with JavaScript */
-	padding-left: 0px;
+	&.Closed {
+		width: 0;
+		padding-left: 0px;
+	}
+	&-Title {
+		font-weight: bold;
+		font-size: 18px;
+		text-align: center;
+	}
+  }
 }

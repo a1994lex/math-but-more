@@ -2,8 +2,6 @@ import './AppletWrapper.css'
 
 import React, { Component } from 'react'
 
-import { TextButton } from '../../components'
-
 type Props = {
 	instructions: String,
 	children: React$Node,
@@ -29,7 +27,8 @@ class AppletWrapper extends Component<Props> {
 					className={
 						'AppletWrapper-Instructions' + (this.state.instructionsVisible ? '' : ' Closed')
 					}>
-					{this.props.instructions}
+					<p className="AppletWrapper-Instructions-Title">Instructions</p>
+					<p>{this.props.instructions}</p>
 				</div>
 			</div>
 		)
