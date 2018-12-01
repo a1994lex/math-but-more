@@ -45,7 +45,13 @@ export default class WordProblems extends Component<Props> {
 		var question = problems[newQuestionNum].problem
 
 		for (var p in paramRanges) {
-			let param = this.numberInRange(paramRanges[p][0], paramRanges[p][1])
+			let lower = isNaN(paramRanges[p][0])
+				? params[parseInt(paramRanges[p][0].substring(1, 2), 10)]
+				: paramRanges[p][0]
+			let upper = isNaN(paramRanges[p][1])
+				? params[parseInt(paramRanges[p][1].substring(1, 2), 10)]
+				: paramRanges[p][1]
+			let param = this.numberInRange(lower, upper)
 			params.push(param)
 			question = question.replace('{' + p.toString() + '}', param.toString())
 		}

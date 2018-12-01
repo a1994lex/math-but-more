@@ -2,7 +2,7 @@ export const problems = [
 	{
 		problem:
 			'Billy likes watermelons. He goes to the store and buys {0} watermelons. Unfortunately, his friend Steve smashes {1} of them. How many does Billy have left?',
-		params: [[1, 50], [1, 25]],
+		params: [[1, 50], [1, '{0}']],
 		answer: (melons, smashed) => melons - smashed,
 	},
 	{
