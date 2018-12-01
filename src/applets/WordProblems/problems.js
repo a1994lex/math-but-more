@@ -30,6 +30,7 @@ export const problems = [
 			while ((kBoxes / kTime) * numHours >= (dBoxes / dTime) * numHours) {
 				numHours += 1
 			}
+			return numHours
 		},
 	},
 ]
