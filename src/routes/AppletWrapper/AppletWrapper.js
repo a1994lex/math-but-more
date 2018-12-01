@@ -1,16 +1,40 @@
-import React from 'react'
-import { AppletHeader } from '../../components'
 import './AppletWrapper.css'
+
+import React, { Component } from 'react'
+
+import { TextButton } from '../../components'
+
 type Props = {
+	instructions: String,
 	children: React$Node,
 }
-function AppletWrapper(props: Props) {
-	return (
-		<div className="AppletWrapper">
-			<AppletHeader />
-			{props.children}
-		</div>
-	)
+class AppletWrapper extends Component<Props> {
+	constructor(props) {
+		super(props)
+		this.state = {
+			instructionsVisible: false,
+		}
+	}
+	render() {
+		return (
+			<div className="AppletWrapper">
+				{this.props.children}
+				<div className="AppletWrapper-DrawerButton">
+					<TextButton
+						onClick={() => this.setState({ instructionsVisible: !this.state.instructionsVisible })}
+						type="normal"
+						text="?"
+					/>
+				</div>
+				<div
+					className={
+						'AppletWrapper-Instructions' + (this.state.instructionsVisible ? '' : ' Closed')
+					}>
+					{this.props.instructions}
+				</div>
+			</div>
+		)
+	}
 }
 
 export default AppletWrapper
