@@ -20,11 +20,10 @@ class AppletWrapper extends Component<Props> {
 			<div className="AppletWrapper">
 				{this.props.children}
 				<div className="AppletWrapper-DrawerButton">
-					<TextButton
-						onClick={() => this.setState({ instructionsVisible: !this.state.instructionsVisible })}
-						type="normal"
-						text="?"
-					/>
+					<div
+						onClick={() => this.setState({ instructionsVisible: !this.state.instructionsVisible })}>
+						?
+					</div>
 				</div>
 				<div
 					className={

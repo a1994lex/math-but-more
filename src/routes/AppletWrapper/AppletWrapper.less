@@ -1,4 +1,33 @@
+@import './src/variables.less';
+
 .AppletWrapper {
   height: 100%;
   display: flex;
+  align-items: stretch;
+}
+
+.AppletWrapper-DrawerButton {
+	position: absolute;
+	top: 64px; /* Header Height*/
+	right: 0px;
+	text-align: center;
+	user-select: none;
+	background-color: @primary-color;
+	color: @primary-color-text;
+	font-weight: bold;
+	min-width: 20px;
+	min-height: 20px;
+	border-radius: 10px;
+}
+
+.AppletWrapper-Instructions {
+	height: 100%; /* 100% Full-height */
+    overflow-x: hidden; /* Disable horizontal scroll */
+	max-width: 20%;
+	padding-left: 12px;
+}
+
+.AppletWrapper-Instructions.Closed {
+	width: 0; /* 0 width - change this with JavaScript */
+	padding-left: 0px;
 }
