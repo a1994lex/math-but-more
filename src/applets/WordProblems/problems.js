@@ -33,7 +33,7 @@ export const problems = [
 	{
 		problem:
 			'Kendall and Denise both like raisins, a lot. Kendall can eat {0} boxes in {1} hours and Denise can eat {2} box in {3} hours.  How many hours will it take for denise to eat more raisins than Kendall?',
-		params: [[5 - 10], [3 - 7], [1 - 5], [1 - 3]],
+		params: [[5, 10], [3, 7], [1, 5], [1, 3]],
 		answer: (kBoxes, kTime, dBoxes, dTime) => {
 			let numHours = 1
 			while ((kBoxes / kTime) * numHours >= (dBoxes / dTime) * numHours) {
