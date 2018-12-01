@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
+import { Accent1Button, Card } from '../../components'
 import { problems } from './problems.js'
-
-import { Accent1Button } from '../../components'
 
 type Props = {}
 
@@ -42,27 +41,31 @@ export default class WordProblems extends Component<Props> {
 	render() {
 		return (
 			<div className="WordProblems">
-				<div className="WordProblems-Body">{problems[this.state.questionNum].problem}</div>
-				{this.state.feedback === '' ? (
-					''
-				) : (
-					<div
-						className={
-							'WordProblems-Feedback' + (this.state.answerIsCorrect ? '-Correct' : '-Incorrect')
-						}>
-						{this.state.feedback}
-					</div>
-				)}
-				<input
-					type="text"
-					onInput={e => {
-						this.setState({ answer: e.target.value })
-					}}
-				/>
-				<Accent1Button
-					text={this.state.answerIsCorrect ? 'Next Question' : 'Submit'}
-					onClick={this.state.answerIsCorrect ? () => this.newQuestion() : () => this.checkAnswer()}
-				/>
+				<Card>
+					<div className="WordProblems-Body">{problems[this.state.questionNum].problem}</div>
+					{this.state.feedback === '' ? (
+						''
+					) : (
+						<div
+							className={
+								'WordProblems-Feedback' + (this.state.answerIsCorrect ? '-Correct' : '-Incorrect')
+							}>
+							{this.state.feedback}
+						</div>
+					)}
+					<input
+						type="text"
+						onInput={e => {
+							this.setState({ answer: e.target.value })
+						}}
+					/>
+					<Accent1Button
+						text={this.state.answerIsCorrect ? 'Next Question' : 'Submit'}
+						onClick={
+							this.state.answerIsCorrect ? () => this.newQuestion() : () => this.checkAnswer()
+						}
+					/>
+				</Card>
 			</div>
 		)
 	}
