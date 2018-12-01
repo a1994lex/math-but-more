@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import { Accent1Button, Card } from '../../components'
+import { Accent1Button, Accent2Button, Card } from '../../components'
 import { problems } from './problems.js'
+import './WordProblems.css'
 
 type Props = {}
 
@@ -35,13 +36,14 @@ export default class WordProblems extends Component<Props> {
 			questionNum: (this.state.questionNum + 1) % problems.length,
 			feedback: '',
 			answerIsCorrect: false,
+			answer: '',
 		})
 	}
 
 	render() {
 		return (
-			<div className="WordProblems">
-				<Card>
+			<Card>
+				<div className="WordProblems">
 					<div className="WordProblems-Body">{problems[this.state.questionNum].problem}</div>
 					{this.state.feedback === '' ? (
 						''
@@ -54,19 +56,20 @@ export default class WordProblems extends Component<Props> {
 						</div>
 					)}
 					<input
+						className="WordProblems-Input"
 						type="text"
+						value={this.state.answer}
 						onInput={e => {
 							this.setState({ answer: e.target.value })
 						}}
 					/>
-					<Accent1Button
-						text={this.state.answerIsCorrect ? 'Next Question' : 'Submit'}
-						onClick={
-							this.state.answerIsCorrect ? () => this.newQuestion() : () => this.checkAnswer()
-						}
-					/>
-				</Card>
-			</div>
+					{this.state.answerIsCorrect ? (
+						<Accent1Button text="Next Question!" onClick={() => this.newQuestion()} />
+					) : (
+						<Accent2Button text="Check" onClick={() => this.checkAnswer()} />
+					)}
+				</div>
+			</Card>
 		)
 	}
 }
