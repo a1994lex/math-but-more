@@ -61,6 +61,10 @@ export default class WordProblems extends Component<Props> {
 		}
 	}
 
+	goToNewQuestion() {
+		this.setState(this.newQuestion())
+	}
+
 	render() {
 		return (
 			<Card>
@@ -80,15 +84,21 @@ export default class WordProblems extends Component<Props> {
 						className="WordProblems-Input"
 						type="text"
 						value={this.state.userAnswer}
+						onKeyPress={e => {
+							if (e.which === 13) {
+								// Enter key
+								console.log(
+									this.state.answerIsCorrect ? 'Going to new question' : 'checking answer'
+								)
+								this.state.answerIsCorrect ? this.goToNewQuestion() : this.checkAnswer()
+							}
+						}}
 						onChange={e => {
 							this.setState({ userAnswer: e.target.value })
 						}}
 					/>
 					{this.state.answerIsCorrect ? (
-						<Accent1Button
-							text="Next Question!"
-							onClick={() => this.setState(this.newQuestion())}
-						/>
+						<Accent1Button text="Next Question!" onClick={() => this.goToNewQuestion()} />
 					) : (
 						<Accent2Button text="Check My Answer" onClick={() => this.checkAnswer()} />
 					)}
