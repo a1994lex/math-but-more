@@ -1,13 +1,13 @@
 export const problems = [
 	{
 		problem:
-			'Billy likes watermelons. He goes to the store and buys {0} watermelons. Unfortunately, his friend Steve smashes {1} of them. How many does Billy have left?',
+			'Jacob likes watermelons. He goes to the store and buys {0} watermelons. Unfortunately, Michael accidentally drops and smashes {1} of them. How many does Billy have left?',
 		params: [[2, 50], [1, '{0}']],
 		answer: (melons, smashed) => melons - smashed,
 	},
 	{
 		problem:
-			'Johnny has {0} chocolates. Ben gives him {1} more. How many chocolates does Johnny have now?',
+			'Joshua has {0} chocolates. Matthew gives him {1} more. How many chocolates does Joshua have now?',
 		params: [[2, 10], [1, 30]],
 		answer: (initial, additional) => initial + additional,
 	},
