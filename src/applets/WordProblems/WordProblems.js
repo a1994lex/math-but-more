@@ -10,15 +10,17 @@ export default class WordProblems extends Component<Props> {
 	constructor(props) {
 		super(props)
 		this.state = {
-			answer: '',
-			feedback: '',
-			answerIsCorrect: false,
 			questionNum: 0,
 		}
+		this.state = this.newQuestion()
 	}
 
 	checkAnswer() {
-		if (this.state.answer === '' + problems[this.state.questionNum].answer) {
+		console.log('Answer: ' + problems[this.state.questionNum].answer.apply(this, this.state.params))
+		if (
+			this.state.userAnswer ===
+			'' + problems[this.state.questionNum].answer.apply(this, this.state.params)
+		) {
 			this.setState({
 				feedback: 'You got it! Great work!',
 				answerIsCorrect: true,
@@ -31,20 +33,39 @@ export default class WordProblems extends Component<Props> {
 		}
 	}
 
+	numberInRange(lower, upper) {
+		return Math.floor(Math.random() * (upper - lower)) + lower
+	}
+
 	newQuestion() {
-		this.setState({
-			questionNum: (this.state.questionNum + 1) % problems.length,
+		var newQuestionNum =
+			(this.state.questionNum + this.numberInRange(1, problems.length - 1)) % problems.length
+
+		var paramRanges = problems[newQuestionNum].params
+		var params = []
+		var question = problems[newQuestionNum].problem
+
+		for (var p in paramRanges) {
+			let param = this.numberInRange(paramRanges[p][0], paramRanges[p][1])
+			params.push(param)
+			question = question.replace('%%' + p.toString() + '%%', param.toString())
+		}
+
+		return {
+			question: question,
+			questionNum: newQuestionNum,
 			feedback: '',
 			answerIsCorrect: false,
-			answer: '',
-		})
+			userAnswer: '',
+			params: params,
+		}
 	}
 
 	render() {
 		return (
 			<Card>
 				<div className="WordProblems">
-					<div className="WordProblems-Body">{problems[this.state.questionNum].problem}</div>
+					<div className="WordProblems-Body">{this.state.question}</div>
 					{this.state.feedback === '' ? (
 						''
 					) : (
@@ -58,13 +79,16 @@ export default class WordProblems extends Component<Props> {
 					<input
 						className="WordProblems-Input"
 						type="text"
-						value={this.state.answer}
-						onInput={e => {
-							this.setState({ answer: e.target.value })
+						value={this.state.userAnswer}
+						onChange={e => {
+							this.setState({ userAnswer: e.target.value })
 						}}
 					/>
 					{this.state.answerIsCorrect ? (
-						<Accent1Button text="Next Question!" onClick={() => this.newQuestion()} />
+						<Accent1Button
+							text="Next Question!"
+							onClick={() => this.setState(this.newQuestion())}
+						/>
 					) : (
 						<Accent2Button text="Check My Answer" onClick={() => this.checkAnswer()} />
 					)}
