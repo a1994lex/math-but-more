@@ -66,7 +66,7 @@ export default class WordProblems extends Component<Props> {
 					{this.state.answerIsCorrect ? (
 						<Accent1Button text="Next Question!" onClick={() => this.newQuestion()} />
 					) : (
-						<Accent2Button text="Check" onClick={() => this.checkAnswer()} />
+						<Accent2Button text="Check My Answer" onClick={() => this.checkAnswer()} />
 					)}
 				</div>
 			</Card>
