@@ -19,13 +19,11 @@ export default class WordProblems extends Component<Props> {
 
 	checkAnswer() {
 		if (this.state.answer === '' + problems[this.state.questionNum].answer) {
-			console.log('did the thing gud')
 			this.setState({
 				feedback: 'You got it! Great work!',
 				answerIsCorrect: true,
 			})
 		} else {
-			console.log('need to git gud')
 			this.setState({
 				feedback: "Sorry, that's incorrect. Can you figure out why?",
 				answerIsCorrect: false,
