@@ -28,7 +28,7 @@ export const problems = [
 			'Johnny and Debbie both love pokemon and collect cards. When they meet up to trade Johnny gives Debbie {0} of his Charizard cards for {1} of her Dittos. If combined they had {2} cards and Debbie walked away with {3} how many cards did Johnny have before the traded?',
 		params: [[2, 10], [2, 10], [20, 70], [10, 40]],
 		answer: (numJohnnyTraded, numDebbieTraded, total, debbieTotal) =>
-			total - debbieTotal - numDebbieTraded + numJohnnyTraded,
+			total - debbieTotal + numDebbieTraded - numJohnnyTraded,
 	},
 	{
 		problem:
