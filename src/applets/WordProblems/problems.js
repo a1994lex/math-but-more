@@ -36,7 +36,7 @@ export const problems = [
 		exact: true,
 	},
 	// {
-	// 	// TODO: guarantee that this is always solvable
+	// 	// TODO: fix the potential infinite loop and the potential unsolvability
 	// 	problem:
 	// 		'Kendall and Denise both like raisins, a lot. Kendall can eat {0} boxes in {1} hours and Denise can eat {2} box in {3} hours.  How many hours will it take for Denise to eat more raisins than Kendall?',
 	// 	params: [[5, 10], [3, 7], [1, 5], [1, 3]],
