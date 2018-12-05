@@ -35,18 +35,12 @@ export const problems = [
 			total - debbieTotal - numDebbieTraded + numJohnnyTraded,
 		exact: true,
 	},
-	// {
-	// 	// TODO: fix the potential infinite loop and the potential unsolvability
-	// 	problem:
-	// 		'Kendall and Denise both like raisins, a lot. Kendall can eat {0} boxes in {1} hours and Denise can eat {2} box in {3} hours.  How many hours will it take for Denise to eat more raisins than Kendall?',
-	// 	params: [[5, 10], [3, 7], [1, 5], [1, 3]],
-	// 	answer: (kBoxes, kTime, dBoxes, dTime) => {
-	// 		let numHours = 1
-	// 		while ((kBoxes / kTime) * numHours >= (dBoxes / dTime) * numHours) {
-	// 			numHours += 1
-	// 		}
-	// 		return numHours
-	// 	},
-	// 	exact: true,
-	// },
+	{
+		problem:
+			'Kendall and Denise both like raisins, a lot. Kendall can eat {0} boxes in {1} hours and Denise can eat {2} boxes in {3} hours.  How many hours will it take for Denise to eat as many raisins as Kendall can eat in {4} hours?',
+		params: [[2, 5], [2, 4], [5, 10], [3, 7], [2, 10]],
+		answer: (kBoxes, kTime, dBoxes, dTime, kHoursTarget) =>
+			((kBoxes / kTime) * kHoursTarget) / (dBoxes / dTime),
+		exact: false,
+	},
 ]

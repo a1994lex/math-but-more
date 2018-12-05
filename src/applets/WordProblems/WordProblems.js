@@ -20,7 +20,7 @@ export default class WordProblems extends Component<Props> {
 			(Math.abs(
 				parseFloat(this.state.userAnswer.trim()) -
 					problems[this.state.questionNum].answer.apply(this, this.state.params)
-			) < 0.01 &&
+			) < 0.005 &&
 				!problems[this.state.questionNum].exact) ||
 			(this.state.userAnswer.trim() ===
 				'' + problems[this.state.questionNum].answer.apply(this, this.state.params) &&
