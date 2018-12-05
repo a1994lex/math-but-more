@@ -17,8 +17,14 @@ export default class WordProblems extends Component<Props> {
 
 	checkAnswer() {
 		if (
-			this.state.userAnswer ===
-			'' + problems[this.state.questionNum].answer.apply(this, this.state.params)
+			(Math.abs(
+				parseFloat(this.state.userAnswer.trim()) -
+					problems[this.state.questionNum].answer.apply(this, this.state.params)
+			) < 0.01 &&
+				!problems[this.state.questionNum].exact) ||
+			(this.state.userAnswer.trim() ===
+				'' + problems[this.state.questionNum].answer.apply(this, this.state.params) &&
+				problems[this.state.questionNum].exact)
 		) {
 			this.setState({
 				feedback: 'You got it! Great work!',
@@ -72,7 +78,12 @@ export default class WordProblems extends Component<Props> {
 		return (
 			<Card>
 				<div className="WordProblems">
-					<div className="WordProblems-Body">{this.state.question}</div>
+					<div className="WordProblems-Body">
+						{this.state.question}
+						{problems[this.state.questionNum].exact
+							? ''
+							: ' (Round your answer to the nearest hundredth.)'}
+					</div>
 					{this.state.feedback === '' ? (
 						''
 					) : (
