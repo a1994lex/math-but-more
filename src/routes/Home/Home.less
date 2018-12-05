@@ -1,7 +1,12 @@
 @import './src/variables.less';
 
 .Home {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-right: 5%;
+  margin-left: 5%;
+
   &-filter-indicator-container {
     display: flex;
     justify-content: space-between;
@@ -14,5 +19,7 @@
   }
   &-filter-indicator {
       font-weight: bold;
+      display: flex;
+      flex-direction: column;
   }
 }

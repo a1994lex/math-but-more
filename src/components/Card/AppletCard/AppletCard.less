@@ -2,14 +2,14 @@
 
   &-button-and-tags {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
   }
 
   &-desc-and-thumb {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 18px;
   }
@@ -20,17 +20,22 @@
   }
 
   &-thumb {
-    max-width: 300px;
+    width: 20vw;
+    align-content: center;
+    text-align: center;
+    margin: 0 auto;
   }
 
   &-desc {
-    padding-right: 6px;
+    margin-top: 8px; 
+    text-align: center;
     font-style: italic;
   }
 
   &-title {
       font-weight: bold;
       font-size: 3vh;
+      text-align: center;
   }
 
 }
