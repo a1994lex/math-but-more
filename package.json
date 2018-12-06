@@ -16,6 +16,7 @@
     "react-resize-detector": "^3.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
+    "react-spring": "^5.3.18",
     "reactstrap": "^6.5.0",
     "redux": "^4.0.1"
   },

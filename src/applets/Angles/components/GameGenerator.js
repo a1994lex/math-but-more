@@ -25,6 +25,8 @@ type State = {
 	playerLocation: Location,
 	playerRadius: number,
 	screenDimensions: { w: number, h: number },
+	canRenderPieces: boolean,
+	numPiecesEaten: number,
 }
 
 export default class GameGenerator extends Component<Props, State> {
@@ -36,6 +38,8 @@ export default class GameGenerator extends Component<Props, State> {
 			playerLocation: { x: 160, y: 95 },
 			playerRadius: 30,
 			screenDimensions: { w: 0, h: 0 },
+			canRenderPieces: false,
+			numPiecesEaten: 0,
 		}
 	}
 
@@ -51,13 +55,19 @@ export default class GameGenerator extends Component<Props, State> {
 			<GameBoard
 				updateScreenSize={(w, h) => {
 					this.generateTokens(w, h)
-					this.setState({ screenDimensions: { w: w, h: h } })
+					this.setState({ screenDimensions: { w: w, h: h }, canRenderPieces: true })
 				}}
 				triggerDirectionChange={this.triggerDirectionChange}>
-				{this.renderPlayer()}
 				{this.renderTokens()}
+				{this.renderPlayer()}
 			</GameBoard>
 		)
+	}
+
+	onPieceUpdate = (location: Location, pieceId: string) => {
+		this.setState(state => {
+			return update(state, { tokens: { [pieceId]: { point: { $set: location } } } })
+		})
 	}
 
 	renderPlayer = () => {
@@ -75,7 +85,19 @@ export default class GameGenerator extends Component<Props, State> {
 		if (this.state.tokens) {
 			const tokens: { [string]: Token } = this.state.tokens
 			Object.keys(tokens).forEach((tokenKey: string) => {
-				tokenHtml.push(<Piece token={tokens[tokenKey]} key={tokenKey} />)
+				tokenHtml.push(
+					<Piece
+						getNewSpot={() => {
+							return generatePointInPolygon(
+								getPolygon(this.state.screenDimensions.w, this.state.screenDimensions.h)
+							)
+						}}
+						canRender={this.state.canRenderPieces}
+						token={tokens[tokenKey]}
+						key={tokenKey}
+						onUpdate={this.onPieceUpdate}
+					/>
+				)
 			})
 		}
 		return tokenHtml
@@ -85,11 +107,25 @@ export default class GameGenerator extends Component<Props, State> {
 		if (!this.state.tokens) return
 		const token: ?Token = this.state.tokens[id]
 		if (token) {
-			this.setState(state => {
+			this.setState((state: State) => {
 				const newDegree: number = this.getNewPlayerDegree(token.value, state)
+				let numEaten = state.numPiecesEaten + 1
+				const newId = `${12 + numEaten}_token`
 				return update(state, {
 					playerDegree: { $set: newDegree },
-					tokens: { $unset: [id] },
+					numPiecesEaten: { $set: numEaten },
+					tokens: {
+						$unset: [id],
+						[newId]: {
+							$set: {
+								id: newId,
+								value: this.getTokenValue(),
+								point: generatePointInPolygon(
+									getPolygon(state.screenDimensions.w, state.screenDimensions.h)
+								),
+							},
+						},
+					},
 				})
 			})
 		}
@@ -143,7 +179,7 @@ export default class GameGenerator extends Component<Props, State> {
 			if (this.state.playerLocation && playerPolygon && this.state.tokens) {
 				forEachValue(this.state.tokens, (token: Token) => {
 					if (isPointInPolygon(token.point, playerPolygon)) {
-						// this.removeToken(token.id)
+						this.removeToken(token.id)
 					}
 				})
 			}

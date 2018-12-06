@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
-import type { Token, Radian, Degree } from '../../../types'
+import type { Token, Radian, Degree, Location } from '../../../types'
 import { radiansToDegrees } from '../../../helpers'
+import { Spring } from 'react-spring'
+import { TimingAnimation } from 'react-spring/dist/addons'
 import './Piece.css'
 type Props = {
 	token: Token,
-	// onCapture: (id: string) => void,
+	onUpdate: (Location, string) => void,
+	getNewSpot: () => Location,
+	canRender: boolean,
 }
 
 type State = {
 	vanishing: boolean,
 	color: string,
+	travellingTo: ?Location,
 }
 
 export default class Piece extends Component<Props, State> {
@@ -27,22 +32,52 @@ export default class Piece extends Component<Props, State> {
 		this.state = {
 			vanishing: false,
 			color: color,
+			travellingTo: props.canRender ? props.getNewSpot() : null,
 		}
 	}
+	componentDidUpdate(prevProps: Props) {
+		if (!prevProps.canRender && this.props.canRender) {
+			this.setState({ travellingTo: this.props.getNewSpot() })
+		}
+	}
+	getTravelDistance = (travellingTo: Location, travellingFrom: Location) => {
+		return Math.sqrt(
+			Math.pow(travellingTo.y - travellingFrom.y, 2) +
+				Math.pow(travellingTo.x - travellingFrom.x, 2)
+		)
+	}
 	render() {
+		const { token, onUpdate, getNewSpot, canRender } = this.props
+		if (!canRender || !this.state.travellingTo) {
+			return null
+		}
+		return (
+			<Spring
+				impl={TimingAnimation}
+				config={{ duration: this.getTravelDistance(this.state.travellingTo, token.point) * 0.6 }}
+				to={this.state.travellingTo}
+				from={token.point}
+				onFrame={(location: Location) => onUpdate(location, token.id)}
+				onRest={() => {
+					this.setState({ travellingTo: getNewSpot() })
+				}}>
+				{location => this.renderContent(location)}
+			</Spring>
+		)
+	}
+
+	renderContent = (location: Location): Object => {
 		const { token } = this.props
 		if (token.value.type === 'radian') {
 			const radialValue: Radian = token.value
-			return this.renderRadian(radialValue)
-		} else {
-			const degreeValue: Degree = token.value
-			return this.renderDegree(degreeValue)
+			return this.renderRadian(radialValue, location)
 		}
+		const degreeValue: Degree = token.value
+		return this.renderDegree(degreeValue, location)
 	}
 
-	renderRadian = (radian: Radian) => {
+	renderRadian = (radian: Radian, location: Location) => {
 		if (radian) {
-			const { token } = this.props
 			const numeratorClass = `${
 				radian.denominator !== 1 && radian.denominator !== 0
 					? 'numerator-underline'
@@ -50,13 +85,12 @@ export default class Piece extends Component<Props, State> {
 			}`
 			return (
 				<foreignObject
-					x={token.point.x}
-					y={token.point.y}
+					style={{ ...location }}
 					className={`${this.state.vanishing ? 'vanishOut' : ''}`}>
 					<div
 						xmlns="http://www.w3.org/1999/xhtml"
 						className={`fraction Piece ${this.state.color}`}
-						style={{ textAlign: 'center' }}>
+						style={{ textAlign: 'center', zIndex: '1' }}>
 						{radian.numerator === 0 ? (
 							<div className={numeratorClass}>
 								{0}
@@ -96,15 +130,12 @@ export default class Piece extends Component<Props, State> {
 			if (prevNum < modValue && !(modValue > curNum)) return curNum
 			else return prevNum
 		}, 0)
-		console.log(modValue + ' = ' + colorMap[colorVal])
 		return colorMap[colorVal]
 	}
 
-	renderDegree = (degree: Degree) => {
-		const { token } = this.props
-
+	renderDegree = (degree: Degree, location: Location) => {
 		return (
-			<foreignObject x={token.point.x} y={token.point.y}>
+			<foreignObject style={{ ...location }}>
 				<div
 					xmlns="http://www.w3.org/1999/xhtml"
 					className={`degree Piece ${this.state.color}`}

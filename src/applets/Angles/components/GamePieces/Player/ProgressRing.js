@@ -28,11 +28,11 @@ export default class ProgressRing extends Component<Props> {
 			<svg
 				x={location.x - radius}
 				y={location.y - radius}
-				style={{ transform: 'rotate(-0.25turn)' }}
+				style={{ transform: 'rotate(-0.25turn), zIndex: 100' }}
 				viewBox="-1 -1 2 2"
 				width={radius * 2}
 				height={radius * 2}>
-				<path fill="#61C0BF" d={pathData} />
+				<path style={{ zIndex: '5' }} fill="#61C0BF" d={pathData} />
 			</svg>
 		)
 	}

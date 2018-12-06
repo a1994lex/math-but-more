@@ -1,4 +1,6 @@
 /* eslint no-mixed-operators: ['off'] */
+import type { UnitCircleItem } from './types'
+
 import { unitCircle } from './constants'
 type Key = string
 type Point = { x: number, y: number }
@@ -29,11 +31,12 @@ export function radiansToDegrees({
 	numerator: number,
 	denominator: number,
 }): number {
-	console.log(numerator + 'pi/' + denominator)
-	const unit = unitCircle.find(
-		unit => unit.radian.numerator === numerator && unit.radian.denominator === denominator
+	const unit: ?UnitCircleItem = unitCircle.find(
+		(unit: UnitCircleItem) =>
+			unit.radian.numerator === numerator && unit.radian.denominator === denominator
 	)
-	return unit.degree
+	if (unit) return unit.degree
+	return 0
 }
 
 export function random(first: number, second?: number): number {

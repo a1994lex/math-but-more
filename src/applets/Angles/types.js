@@ -23,3 +23,8 @@ export type Token = {
 }
 
 export type Point = Location
+
+export type UnitCircleItem = {
+	degree: number,
+	radian: { numerator: number, denominator: number },
+}

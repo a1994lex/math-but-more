@@ -1,9 +1,8 @@
+import type { UnitCircleItem } from './types'
+
 export const CIRCLE_DEGREES = 360
 
-export const unitCircle: {
-	degree: number,
-	radian: { numerator: number, denominator: number },
-}[] = [
+export const unitCircle: UnitCircleItem[] = [
 	{ degree: 0, radian: { numerator: 0, denominator: 1 } },
 	{ degree: 30, radian: { numerator: 1, denominator: 6 } },
 	{ degree: 45, radian: { numerator: 1, denominator: 4 } },
