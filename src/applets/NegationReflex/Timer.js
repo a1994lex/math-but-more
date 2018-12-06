@@ -58,14 +58,19 @@ export default class Timer extends Component<Props, State> {
 			this.setState({ done: true })
 		}
 	}
+	createMarkup() {
+		var html = ''
+		if (this.state.seconds > 0) {
+			html = '<h3>Time remaining ' + this.state.time.m + ':' + this.state.time.s + '</h3>'
+		}
+		return { __html: html }
+	}
 
 	render() {
 		return (
 			<span>
-				<h3>
-					Time remaining {this.state.time.h}:{this.state.time.m}:{this.state.time.s}
-				</h3>
-				{this.state.done ? <Accuracy /> : <NegationApplet seconds={this.state.seconds} />}
+				<div dangerouslySetInnerHTML={this.createMarkup()} />
+				<NegationApplet seconds={this.state.seconds} />
 			</span>
 		)
 	}

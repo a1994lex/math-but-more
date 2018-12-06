@@ -27,8 +27,20 @@ body{
 .Outputgreen{
     color: green;
 }
+.correctAnswerList{
+  color: #1c0b7e;
+}
 .Outputred{
     color: red;
+}
+.wrongAnswerList{
+  // color:orange;
+  span {
+    color: red;
+    span{
+      text-decoration: line-through;
+    }
+  }
 }
 .Main{
   width: 100%;
@@ -47,4 +59,26 @@ body{
 
 #timeup{
   color:orange;
+}
+
+.Outputhidden{
+  display:none
+}
+
+.AfterGameOutPut{
+  width: 250px;
+  margin-right: 0px;
+  margin: auto;
+  margin-top: 0px;
+}
+
+ol {
+  text-align: left;
+  list-style-position: inside;
+}
+
+ol li::before {
+  content: ' ';
+  display: inline-block;
+  width: 15px;
 }

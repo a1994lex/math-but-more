@@ -1,35 +1,36 @@
+/* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
 
 type props = {
-	correct: null,
-	output: String,
-}
-type state = {
-	correct: number,
 	total: number,
+	wrong: number,
+	arr: ?Array,
 }
+
+type state = {}
 
 export default class Accuracy extends Component<props, state> {
 	constructor(props) {
 		super(props)
-		this.state = {
-			correct: 0,
-			total: 0,
-		}
-		this.handleChange = this.handleChange.bind(this)
+		this.state = {}
 	}
 
-	handleChange(event) {
-		this.getbools()
-	}
+	createListComponent() {
+		if(!this.props.arr)
+			return null
 
-	getbools() {
-		if (this.props.correct != null) {
-			this.setState({ total: this.state.total + 1 })
-			if (this.props.correct) {
-				this.setState({ correct: this.state.correct + 1 })
-			}
-		}
+		return (
+			<ol>
+				{
+					this.props.arr.map((answer, index)=>{
+						if(answer.correct)
+							return <li key={index} className="correctAnswerList"> {answer.problem} {answer.answer} </li>
+						else
+							return <li key={index} className="wrongAnswerList"> <span>{answer.problem} <span>{answer.answer}</span> ({answer.problemAnswer})</span></li>
+					})
+				}
+			</ol>
+		)
 	}
 
 	render() {
@@ -37,10 +38,12 @@ export default class Accuracy extends Component<props, state> {
 			<div>
 				<span className="Accuracy">
 					<h4>
-						Score: {this.state.correct} / {this.state.total}
+						Score: {this.props.total - this.props.wrong} / {this.props.total}
 					</h4>
 				</span>
-				<div onChange={this.handleChange}>{this.props.output}</div>
+				<div className="AfterGameOutPut">
+					{this.createListComponent()}
+				</div>
 			</div>
 		)
 	}
