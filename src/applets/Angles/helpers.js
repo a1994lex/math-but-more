@@ -1,5 +1,5 @@
 /* eslint no-mixed-operators: ['off'] */
-
+import { unitCircle } from './constants'
 type Key = string
 type Point = { x: number, y: number }
 
@@ -16,6 +16,24 @@ export function forEachValue<S>(object: { [Key]: S }, callback: S => any) {
 			callback(object[key])
 		}
 	}
+}
+
+export function getPolygon(w: number, h: number) {
+	return [{ x: 0, y: 0 }, { x: 0, y: h }, { x: w, y: h }, { x: w, y: h }]
+}
+
+export function radiansToDegrees({
+	numerator,
+	denominator,
+}: {
+	numerator: number,
+	denominator: number,
+}): number {
+	console.log(numerator + 'pi/' + denominator)
+	const unit = unitCircle.find(
+		unit => unit.radian.numerator === numerator && unit.radian.denominator === denominator
+	)
+	return unit.degree
 }
 
 export function random(first: number, second?: number): number {

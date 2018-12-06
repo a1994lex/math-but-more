@@ -1,24 +1,105 @@
 .Piece {
     border-radius: 50%;
-    background-color: green;
-    border: 1px solid;
+    // border: 1px solid;
     width: 50px;
     height: 50px;
     span, div {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
 .fraction {
-  > * {
-    padding: 0px;
-  }
-  .numerator-underline {
-    border-bottom: 1px solid black
-  }
-  .denominator {
-  }
+    > * {
+        padding: 0px;
+    }
+    .numerator-underline {
+        line-height: 20px;
+        margin: 6px 8px;
+        border-bottom: 1px solid black
+    }
+    .whole-number {
+        padding-top: 8px;
+    }
+    .denominator {
+        margin-top: -6px;
+    }
 }
+
+.degree {
+    padding-top: 8px;
+}
+
+//colors
+@grey: grey;
+@lightblue: #bae1ff;
+@blue: #78A7FF;
+@purple: #AE7BE8;
+@red: #FF908C;
+@orange: #E89450;
+@lightorange: tan;
+@yellow: #FFD758;
+
+.grey {
+    background-color: @grey;
+    color: white;
+    > * {
+        border-color: white !important;
+    }
+}
+
+.light-blue {
+    background-color: @lightblue;
+}
+
+.blue {
+    background-color:@blue;
+    color: white;
+    > * {
+        border-color: white !important;
+    }
+}
+
+.purple {
+    background-color: @purple;
+    color: white;
+    > * {
+        border-color: white !important;
+    }
+}
+
+.red {
+    background-color: @red;
+    color: white;
+    > * {
+        border-color: white !important;
+    }
+}
+
+.orange {
+    background-color: @orange;
+    color: white;
+    > * {
+        border-color: white !important;
+    }
+}
+
+.light-orange {
+    background-color: @lightorange;
+    color: white;
+    > * {
+        border-color: white !important;
+    }
+}
+
+.yellow {
+    background-color: @yellow;
+}
+
+.white {
+    background-color: white;
+}
+
+
 
 .vanish-out {
   -webkit-animation-name: vanishOut;
