@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './TransMatrice.css'
 import { Container, Row, Col } from 'reactstrap'
 import pacman from './pacman.svg'
+import { Accent2Button } from '../../components'
 type Props = {}
 
 export default class TransMatrice extends Component<Props> {
@@ -35,7 +36,6 @@ export default class TransMatrice extends Component<Props> {
 			r: this.state.rot,
 			s: this.state.scale,
 		})
-		event.preventDefault()
 	}
 	render() {
 		let pman = {
@@ -45,66 +45,102 @@ export default class TransMatrice extends Component<Props> {
 		}
 		return (
 			<Container className="TransMatrice">
-				<Row>
-					<span
-						className="border border-dark"
-						style={{
-							height: '700px',
-							width: '700px',
-							overflow: 'hidden',
-							backgroundColor: 'rgba(255, 255, 255, 0.8',
-						}}>
-						<img src={pacman} style={pman} />
-					</span>
+				<div class="shadow p-3 mb-5 bg-white rounded">
+					<Col style={{ backgroundColor: '#d3d3d3', height: '500px', overflow: 'hidden' }}>
+						<span
+							style={{
+								width: '700px',
+							}}>
+							<img src={pacman} style={pman} />
+						</span>
+					</Col>
 					<Col
 						style={{
 							paddingLeft: '90px',
 							paddingRight: '90px',
-							paddingTop: '90px',
-							backgroundColor: '#ffcc66',
+							paddingTop: '30px',
 						}}>
 						<form onSubmit={this.handleSubmit}>
-							<label>
-								Translate x:
-								<input
-									type="text"
-									value={this.state.transx}
-									onChange={this.handleChangeTranslateX}
-								/>
-							</label>
-							<label>
-								Translate y:
-								<input
-									type="text"
-									value={this.state.transy}
-									onChange={this.handleChangeTranslateY}
-								/>
-							</label>
-							<label>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotate:
-								<input type="text" value={this.state.rot} onChange={this.handleChangeRotate} />
-							</label>
-							<label>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scale:
-								<input type="text" value={this.state.scale} onChange={this.handleChangeScale} />
-							</label>
-							<Row style={{ marginLeft: '190px' }}>
-								<button style={{ backgroundColor: '#aaff66' }}>Submit</button>
-							</Row>
-							<Row>
-								<br />
-								Every image can be represented by a series of points that genreally look like:
-								Point(x, y) these points can be manipulated by multiplying them with data structures
-								called matrices. The simplest things you can do with an image and a matrix are
-								moving it (Translation), turning it (Rotation) and making it bigger or smaller
-								(Scaling). In the image above try warping the image with the input fields
-								<br />
-								<br /> **Use 50-500 for translations, any number for rotations(0-360 is a good place
-								to start), and 1-3 for scaling**.
-							</Row>
+							<div style={{ textAlign: 'center' }}>
+								{' '}
+								<div>
+									{' '}
+									<label>
+										Translate x: &nbsp;
+										<input
+											style={{
+												boxSizing: 'border-box',
+												mozBorderRadius: '4px',
+												webkitBorderRadius: '4px',
+												borderRadius: '4px',
+												border: '1px solid #00206f',
+											}}
+											type="text"
+											value={this.state.transx}
+											onChange={this.handleChangeTranslateX}
+										/>
+									</label>
+								</div>
+								<div>
+									<label>
+										Translate y: &nbsp;
+										<input
+											style={{
+												boxSizing: 'border-box',
+												mozBorderRadius: '4px',
+												webkitBorderRadius: '4px',
+												borderRadius: '4px',
+												border: '1px solid #00206f',
+											}}
+											type="text"
+											value={this.state.transy}
+											onChange={this.handleChangeTranslateY}
+										/>
+									</label>
+								</div>
+								<div style={{ marginLeft: '28px' }}>
+									{' '}
+									<label>
+										Rotate: &nbsp;
+										<input
+											style={{
+												boxSizing: 'border-box',
+												mozBorderRadius: '4px',
+												webkitBorderRadius: '4px',
+												borderRadius: '4px',
+												border: '1px solid #00206f',
+											}}
+											type="text"
+											value={this.state.rot}
+											onChange={this.handleChangeRotate}
+										/>
+									</label>
+								</div>{' '}
+								<div style={{ marginLeft: '30px' }}>
+									<label>
+										Scale: &nbsp;
+										<input
+											style={{
+												boxSizing: 'border-box',
+												marginBottom: '4px',
+												mozBorderRadius: '4px',
+												webkitBorderRadius: '4px',
+												borderRadius: '4px',
+												border: '1px solid #00206f',
+											}}
+											type="text"
+											value={this.state.scale}
+											onChange={this.handleChangeScale}
+										/>
+									</label>
+								</div>
+								<div>
+									<Accent2Button text="Submit" onClick={() => this.handleSubmit()} />
+								</div>
+							</div>
 						</form>
 					</Col>
-				</Row>
+				</div>
 			</Container>
 		)
 	}
