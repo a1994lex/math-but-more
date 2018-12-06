@@ -4,7 +4,7 @@ import { Header } from './components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
 import store from './store'
-
+import Modal from 'react-modal'
 // import Tooltip from "react-portal-tooltip";
 
 import './main.css'
@@ -19,6 +19,9 @@ type Props = {
 }
 
 class App extends Component<Props> {
+	componentDidMount() {
+		Modal.setAppElement('#root')
+	}
 	render() {
 		return (
 			<Router>

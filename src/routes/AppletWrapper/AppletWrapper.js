@@ -1,13 +1,18 @@
 import './AppletWrapper.css'
 
 import React, { Component } from 'react'
+import Instructions from './Instructions'
 
 type Props = {
 	instructions: String,
 	children: React$Node,
 }
-class AppletWrapper extends Component<Props> {
-	constructor(props) {
+type State = {
+	instructionsVisible: boolean,
+}
+
+class AppletWrapper extends Component<Props, State> {
+	constructor(props: Props) {
 		super(props)
 		this.state = {
 			instructionsVisible: false,
@@ -19,17 +24,21 @@ class AppletWrapper extends Component<Props> {
 				{this.props.children}
 				<div className="AppletWrapper-DrawerButton">
 					<div
-						onClick={() => this.setState({ instructionsVisible: !this.state.instructionsVisible })}>
+						onClick={() =>
+							this.setState(state => {
+								return {
+									instructionsVisible: !state.instructionsVisible,
+								}
+							})
+						}>
 						?
 					</div>
 				</div>
-				<div
-					className={
-						'AppletWrapper-Instructions' + (this.state.instructionsVisible ? '' : ' Closed')
-					}>
-					<p className="AppletWrapper-Instructions-Title">Instructions</p>
-					<p>{this.props.instructions}</p>
-				</div>
+				<Instructions
+					open={this.state.instructionsVisible}
+					close={() => this.setState({ instructionsVisible: false })}
+					instructions={this.props.instructions}
+				/>
 			</div>
 		)
 	}
