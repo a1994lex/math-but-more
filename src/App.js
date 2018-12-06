@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { appletRoutes, Home, homeRoute, AppletWrapper } from './routes'
+import { applets, Home, homeRoute, AppletWrapper } from './routes'
 import { Header } from './components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
@@ -26,16 +26,16 @@ class App extends Component<Props> {
 					<Header title />
 					<div className="main-content">
 						<Route key={0} path={homeRoute.path} exact={true} component={Home} />
-						{appletRoutes.map((route, index) => {
-							if (route.dev) return null
+						{applets.map((applet, index) => {
+							if (applet.route.dev) return null
 							return (
 								<Route
 									key={index + 1}
-									path={route.path}
-									exact={route.exact || false}
+									path={applet.route.path}
+									exact={applet.route.exact || false}
 									render={() => (
-										<AppletWrapper>
-											<route.main />
+										<AppletWrapper instructions={applet.instructions}>
+											<applet.route.main />
 										</AppletWrapper>
 									)}
 								/>

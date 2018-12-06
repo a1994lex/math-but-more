@@ -1,3 +1,40 @@
+@import './src/variables.less';
+
 .AppletWrapper {
   height: 100%;
+  display: flex;
+  align-items: stretch;
+  &-DrawerButton {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	text-align: center;
+	user-select: none;
+	background-color: @primary-color;
+	color: @primary-color-text;
+	font-weight: bold;
+	min-width: 20px;
+	min-height: 20px;
+	margin: 10px;
+	margin-right: 26px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  &-Instructions {
+	height: 100%;
+	overflow-x: hidden;
+	max-width: 20%;
+	padding-left: 12px;
+	&.Closed {
+		width: 0;
+		padding-left: 0px;
+	}
+	&-Title {
+		font-weight: bold;
+		font-size: 18px;
+		text-align: center;
+	}
+  }
 }
