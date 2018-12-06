@@ -135,7 +135,7 @@ export default class GameGenerator extends Component<Props, State> {
 			if (this.state.playerLocation && playerPolygon && this.state.tokens) {
 				forEachValue(this.state.tokens, (token: Token) => {
 					if (isPointInPolygon(token.point, playerPolygon)) {
-						this.removeToken(token.id)
+						// this.removeToken(token.id)
 					}
 				})
 			}

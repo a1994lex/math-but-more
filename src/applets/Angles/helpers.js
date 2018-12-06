@@ -1,6 +1,7 @@
 /* eslint no-mixed-operators: ['off'] */
 
 type Key = string
+type Point = { x: number, y: number }
 
 /**
  * Iterates over each value in an object and runs a callback on that value.
@@ -54,7 +55,6 @@ export function isPointInPolygon(point: Point, polygon: Point[]) {
 		const y_j = polygon[j].y
 		//eslint -disable-next-line
 		var intersect = y_i > y !== y_j > y && x < ((x_j - x_i) * (y - y_i)) / (y_j - y_i) + x_i
-		console.log(intersect)
 		if (intersect) inside = !inside
 	}
 

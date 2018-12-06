@@ -36,7 +36,7 @@ export default class Piece extends Component<Props, State> {
 					className={`${this.state.vanishing ? 'vanishOut' : ''}`}>
 					<div
 						xmlns="http://www.w3.org/1999/xhtml"
-						className={`fraction`}
+						className={`fraction Piece`}
 						style={{ textAlign: 'center' }}>
 						{radian.numerator === 0 ? (
 							<span className={numeratorClass}>
@@ -64,10 +64,10 @@ export default class Piece extends Component<Props, State> {
 		const { token } = this.props
 
 		return (
-			<foreignObject x={token.point.x} y={token.point.y} width={10} height={10}>
+			<foreignObject x={token.point.x} y={token.point.y}>
 				<div
 					xmlns="http://www.w3.org/1999/xhtml"
-					className={`degree`}
+					className={`degree Piece`}
 					style={{ textAlign: 'center' }}>
 					<span className={`${this.state.vanishing ? 'vanish-out' : ''}`}>
 						{degree.degree}
