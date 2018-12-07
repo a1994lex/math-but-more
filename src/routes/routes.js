@@ -14,7 +14,7 @@ import type { MathRoute, MathApplet } from '../models'
 import anglesImage from '../assets/appletIcons/anglesyum.png'
 import homographyImage from '../logo.svg'
 import robotmazeImage from '../assets/appletIcons/roomba.png'
-import wordproblemsImage from '../logo.svg'
+import wordproblemsImage from '../assets/appletIcons/watermelons.jpg'
 import transformationsImage from '../assets/pacman.svg'
 import negation from '../assets/appletIcons/negation2.png'
 
@@ -85,9 +85,9 @@ export const applets: MathApplet[] = [
 			main: WordProblems,
 			name: 'Word Problems',
 		},
-		description: 'Solve word problems involving algebra and trigonometry concepts',
+		description: 'Solve word problems involving arithmetic and algebra concepts',
 		instructions:
-			'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service. Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.',
+			"Use your mad math skills to solve the problem, type the answer in the box, and click 'Check Answer'",
 		type: 'game',
 		subjects: ['integers', 'arithmetic', 'algebra'],
 		image: wordproblemsImage,
