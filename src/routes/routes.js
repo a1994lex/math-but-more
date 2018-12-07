@@ -74,7 +74,7 @@ export const applets: MathApplet[] = [
 		},
 		description: 'Explore how matrices are used to transform shapes in computer graphics',
 		instructions:
-			'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service. Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.',
+			'Every image can be represented by a series of points that genreally look like: Point(x, y) these points can be manipulated by multiplying them with data structures called matrices. The simplest things you can do with an image and a matrix are moving it (Translation), turning it (Rotation) and making it bigger or smaller (Scaling). Try warping the image with the input field.',
 		type: 'demo',
 		subjects: ['matrices'],
 		image: transformationsImage,
