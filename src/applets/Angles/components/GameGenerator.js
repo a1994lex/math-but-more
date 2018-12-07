@@ -141,7 +141,6 @@ export default class GameGenerator extends Component<Props, State> {
 			plusValue = radiansToDegrees(value)
 		}
 		const newVal = (this.props.playerDegree + plusValue) % CIRCLE_DEGREES
-		console.log(`${newVal} === ${this.props.targetAngle}`)
 		if (newVal === this.props.targetAngle) {
 			const angle: UnitCircleItem = unitCircle[random(0, unitCircle.length - 1)]
 			this.props.updateTarget(angle.degree)
