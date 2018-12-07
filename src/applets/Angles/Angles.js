@@ -17,6 +17,7 @@ type State = {
 	targetAngle: number,
 	updateTokens: boolean,
 	playerDegree: number,
+	points: number,
 }
 
 class Angles extends Component<Props, State> {
@@ -24,6 +25,7 @@ class Angles extends Component<Props, State> {
 		targetAngle: 60,
 		updateTokens: false,
 		playerDegree: 90,
+		points: 0,
 	}
 	render() {
 		return (
@@ -32,6 +34,7 @@ class Angles extends Component<Props, State> {
 					targetAngle={this.state.targetAngle}
 					toggleUpdateTokens={this.toggleUpdateTokens}
 					currentAngle={this.state.playerDegree}
+					points={this.state.points}
 				/>
 				<GameGenerator
 					updatePlayerDegree={(newDegree: number) => this.setState({ playerDegree: newDegree })}
@@ -45,8 +48,12 @@ class Angles extends Component<Props, State> {
 		)
 	}
 	updateTargetAngle = (newValue: number) => {
-		this.setState({ targetAngle: newValue % CIRCLE_DEGREES })
-		console.log('showing tooltip')
+		this.setState(state => {
+			return {
+				targetAngle: newValue % CIRCLE_DEGREES,
+				points: state.points + 10,
+			}
+		})
 		this.props.showTooltip('Well done you did it!', '#problem', 'bottom')
 	}
 	toggleUpdateTokens = () => {

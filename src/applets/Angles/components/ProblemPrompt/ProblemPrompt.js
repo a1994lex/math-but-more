@@ -11,9 +11,21 @@ type Props = {
 	targetAngle: number,
 	currentAngle: number,
 	toggleUpdateTokens: Function,
+	points: number,
 }
 
-export default class ProblemPrompt extends Component<Props> {
+type State = {
+	confetti: boolean,
+}
+
+export default class ProblemPrompt extends Component<Props, State> {
+	state = { confetti: false }
+	componentDidUpdate(prevProps: Props) {
+		if (prevProps.points < this.props.points) {
+			this.setState({ confetti: true })
+			setTimeout(() => this.setState({ confetti: false }), 3000)
+		}
+	}
 	render() {
 		const radian: RadianType = degreesToRadians(this.props.targetAngle)
 		const curRadian: RadianType = degreesToRadians(this.props.currentAngle)
@@ -45,6 +57,10 @@ export default class ProblemPrompt extends Component<Props> {
 					<div className="ProblemPrompt-container">
 						<Radian radian={curRadian} />
 					</div>
+				</div>
+				<div className={`ProblemPrompt-container ${this.state.confetti ? 'pulse' : ''}`}>
+					Points: {this.props.points}
+					{this.state.confetti && <div>Great Job!</div>}
 				</div>
 				<Accent2Button text="Reload Values" onClick={this.props.toggleUpdateTokens} />
 			</div>
