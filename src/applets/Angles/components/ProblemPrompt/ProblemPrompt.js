@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PrimaryButton from '../../../../components/Buttons/PrimaryButton/index'
+import { Accent2Button } from '../../../../components/Buttons'
 import type { RadianType } from '../../types'
 import { CIRCLE_DEGREES } from '../../constants'
 import { degreesToRadians } from '../../helpers'
@@ -46,7 +46,7 @@ export default class ProblemPrompt extends Component<Props> {
 						<Radian radian={curRadian} />
 					</div>
 				</div>
-				<PrimaryButton text="Reload Board" onClick={this.props.toggleUpdateTokens} />
+				<Accent2Button text="Reload Values" onClick={this.props.toggleUpdateTokens} />
 			</div>
 		)
 	}
