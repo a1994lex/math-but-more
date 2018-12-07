@@ -1,10 +1,10 @@
 /* eslint no-mixed-operators: ['off'] */
-import type { UnitCircleItem } from './types'
+import type { UnitCircleItem, RadianType } from './types'
 
-import { unitCircle } from './constants'
+import { unitCircle, specificCircle } from './constants'
 type Key = string
 type Point = { x: number, y: number }
-
+type CircleType = Point & { r: number }
 /**
  * Iterates over each value in an object and runs a callback on that value.
  * @param {Object} object The object whose values are to be iterated
@@ -39,6 +39,15 @@ export function radiansToDegrees({
 	return 0
 }
 
+export function degreesToRadians(degree: number): RadianType {
+	const findFunction = (circle: UnitCircleItem[]): ?UnitCircleItem => {
+		return circle.find((unit: UnitCircleItem) => unit.degree === degree)
+	}
+	const unit: ?UnitCircleItem = findFunction(specificCircle)
+	if (unit) return { numerator: unit.radian.numerator, denominator: unit.radian.denominator }
+	return { numerator: 0, denominator: 0 }
+}
+
 export function random(first: number, second?: number): number {
 	let lowerBound = second ? first : 0
 	let upperBound = second || first
@@ -62,6 +71,22 @@ export function generatePointInPolygon(polygon: Point[]) {
 	} while (!isPointInPolygon({ x, y }, polygon))
 
 	return { x, y }
+}
+
+/**
+ * Given 2 sets of cooridnates and radiuses, determines whether either is within the other's radius.
+ * @param  {{x: number, y: number, r: number}}  origin The origin object comprised of x,y coordinates and its radius
+ * @param  {{x: number, y: number, r: number}}  target The target object comprised of x, y coordinates and its radius.
+ * @return {Boolean}        [description]
+ */
+export function circlesIntersect(origin: CircleType, target: CircleType): boolean {
+	const distanceSquared: number =
+		(origin.x - target.x) * (origin.x - target.x) + (origin.y - target.y) * (origin.y - target.y)
+
+	const radiusSquared: number = (origin.r + target.r) * (origin.r + target.r)
+
+	if (distanceSquared > radiusSquared) return false
+	return true
 }
 
 export function isPointInPolygon(point: Point, polygon: Point[]) {

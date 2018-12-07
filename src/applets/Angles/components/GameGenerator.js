@@ -2,26 +2,28 @@ import React, { Component } from 'react'
 import GameBoard from './GameBoard'
 import update from 'immutability-helper'
 import { unitCircle } from '../constants'
-import type { Token, TokenValue, Location } from '../types'
+import type { Token, TokenValue, Location, Point, UnitCircleItem } from '../types'
 import {
 	generatePointInPolygon,
 	random,
 	forEachValue,
-	isPointInPolygon,
+	circlesIntersect,
 	radiansToDegrees,
 	getPolygon,
 } from '../helpers'
 import { Player, Piece } from './GamePieces'
 import { CIRCLE_DEGREES } from '../constants'
 type Props = {
-	updateTarget: (number, number) => void,
+	updateTarget: number => void,
 	toggleUpdateTokens: () => void,
 	updateTokenState: boolean,
+	targetAngle: number,
+	playerDegree: number,
+	updatePlayerDegree: number => void,
 }
 
 type State = {
 	tokens: ?{ [string]: Token },
-	playerDegree: number,
 	playerLocation: Location,
 	playerRadius: number,
 	screenDimensions: { w: number, h: number },
@@ -34,7 +36,6 @@ export default class GameGenerator extends Component<Props, State> {
 		super(props)
 		this.state = {
 			tokens: null,
-			playerDegree: 285,
 			playerLocation: { x: 160, y: 95 },
 			playerRadius: 30,
 			screenDimensions: { w: 0, h: 0 },
@@ -64,20 +65,21 @@ export default class GameGenerator extends Component<Props, State> {
 		)
 	}
 
-	onPieceUpdate = (location: Location, pieceId: string) => {
-		this.setState(state => {
-			return update(state, { tokens: { [pieceId]: { point: { $set: location } } } })
-		})
-	}
-
 	renderPlayer = () => {
 		return (
 			<Player
 				currentLocation={this.state.playerLocation}
 				radius={this.state.playerRadius}
-				percentage={this.state.playerDegree / CIRCLE_DEGREES}
+				percentage={this.props.playerDegree / CIRCLE_DEGREES}
 			/>
 		)
+	}
+
+	getNewFixedDistanceSpot = (curLocation: Point): Point => {
+		const point: Point = generatePointInPolygon(
+			getPolygon(this.state.screenDimensions.w, this.state.screenDimensions.h)
+		)
+		return point
 	}
 
 	renderTokens() {
@@ -85,19 +87,19 @@ export default class GameGenerator extends Component<Props, State> {
 		if (this.state.tokens) {
 			const tokens: { [string]: Token } = this.state.tokens
 			Object.keys(tokens).forEach((tokenKey: string) => {
-				tokenHtml.push(
-					<Piece
-						getNewSpot={() => {
-							return generatePointInPolygon(
-								getPolygon(this.state.screenDimensions.w, this.state.screenDimensions.h)
-							)
-						}}
-						canRender={this.state.canRenderPieces}
-						token={tokens[tokenKey]}
-						key={tokenKey}
-						onUpdate={this.onPieceUpdate}
-					/>
-				)
+				if (tokens[tokenKey]) {
+					tokenHtml.push(
+						<Piece
+							getNewSpot={(): Point => {
+								return this.getNewFixedDistanceSpot(tokens[tokenKey].point)
+							}}
+							canRender={this.state.canRenderPieces}
+							token={tokens[tokenKey]}
+							key={tokenKey}
+							onUpdate={this.onPieceUpdate}
+						/>
+					)
+				}
 			})
 		}
 		return tokenHtml
@@ -108,11 +110,11 @@ export default class GameGenerator extends Component<Props, State> {
 		const token: ?Token = this.state.tokens[id]
 		if (token) {
 			this.setState((state: State) => {
-				const newDegree: number = this.getNewPlayerDegree(token.value, state)
+				const newDegree: number = this.getNewPlayerDegree(token.value)
 				let numEaten = state.numPiecesEaten + 1
 				const newId = `${12 + numEaten}_token`
+				this.props.updatePlayerDegree(newDegree)
 				return update(state, {
-					playerDegree: { $set: newDegree },
 					numPiecesEaten: { $set: numEaten },
 					tokens: {
 						$unset: [id],
@@ -131,14 +133,20 @@ export default class GameGenerator extends Component<Props, State> {
 		}
 	}
 
-	getNewPlayerDegree = (value: TokenValue, state: State) => {
+	getNewPlayerDegree = (value: TokenValue) => {
 		let plusValue = 0
 		if (value.type === 'degree') {
 			plusValue = value.degree
 		} else {
 			plusValue = radiansToDegrees(value)
 		}
-		return (state.playerDegree += plusValue) % CIRCLE_DEGREES
+		const newVal = (this.props.playerDegree + plusValue) % CIRCLE_DEGREES
+		console.log(`${newVal} === ${this.props.targetAngle}`)
+		if (newVal === this.props.targetAngle) {
+			const angle: UnitCircleItem = unitCircle[random(0, unitCircle.length - 1)]
+			this.props.updateTarget(angle.degree)
+		}
+		return newVal
 	}
 
 	generateTokens = (w: number, h: number) => {
@@ -178,12 +186,37 @@ export default class GameGenerator extends Component<Props, State> {
 			const playerPolygon: ?(Location[]) = this.getPlayerPolygon()
 			if (this.state.playerLocation && playerPolygon && this.state.tokens) {
 				forEachValue(this.state.tokens, (token: Token) => {
-					if (isPointInPolygon(token.point, playerPolygon)) {
+					if (this.playerIntersectsPiece(token.point)) {
 						this.removeToken(token.id)
 					}
 				})
 			}
 		})
+	}
+
+	playerIntersectsPiece(tokenPoint: Location): boolean {
+		const { playerLocation, playerRadius } = this.state
+		return !!(
+			playerLocation &&
+			playerRadius &&
+			circlesIntersect(
+				{
+					r: 16,
+					...tokenPoint,
+				},
+				{ r: playerRadius, ...playerLocation }
+			)
+		)
+	}
+
+	onPieceUpdate = (location: Location, pieceId: string) => {
+		if (this.playerIntersectsPiece(location)) {
+			this.removeToken(pieceId)
+		} else {
+			this.setState(state => {
+				return update(state, { tokens: { [pieceId]: { point: { $set: location } } } })
+			})
+		}
 	}
 
 	getPlayerPolygon = (): ?(Location[]) => {

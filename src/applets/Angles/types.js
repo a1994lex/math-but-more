@@ -8,8 +8,10 @@ export type Degree = {
 	degree: number,
 }
 
-export type Radian = {
+export type Radian = RadianType & {
 	type: 'radian',
+}
+export type RadianType = {
 	numerator: number,
 	denominator: number,
 }
