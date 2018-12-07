@@ -52,17 +52,19 @@ export default class Home extends Component<Props, State> {
 				) : (
 					''
 				)}
-				{this.state.applets.map((applet: MathApplet) => {
-					if (applet.dev) return null
-					return (
-						<AppletCard
-							key={applet.route.name}
-							onSubjectClick={this.filterBySubject}
-							onTypeClick={this.filterByType}
-							applet={applet}
-						/>
-					)
-				})}
+				<div className="applet-list">
+					{this.state.applets.map((applet: MathApplet) => {
+						if (applet.dev) return null
+						return (
+							<AppletCard
+								key={applet.route.name}
+								onSubjectClick={this.filterBySubject}
+								onTypeClick={this.filterByType}
+								applet={applet}
+							/>
+						)
+					})}
+				</div>
 			</div>
 		)
 	}
