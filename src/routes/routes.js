@@ -8,6 +8,7 @@ import {
 } from './../applets'
 
 import Home from './Home'
+import { instructions as AngleInstructions } from '../applets/Angles/instructions'
 
 import type { MathRoute, MathApplet } from '../models'
 
@@ -33,8 +34,7 @@ export const applets: MathApplet[] = [
 			name: 'Angles.yum',
 		},
 		description: 'Eat angles to get the correct measurement',
-		instructions:
-			'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service. Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.',
+		instructions: AngleInstructions(),
 		type: 'game',
 		subjects: ['angles', 'arithmetic'],
 		image: anglesImage,
