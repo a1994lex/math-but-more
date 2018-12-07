@@ -17,6 +17,7 @@ import robotmazeImage from '../assets/appletIcons/roomba.png'
 import wordproblemsImage from '../logo.svg'
 import transformationsImage from '../assets/pacman.svg'
 import negation from '../assets/appletIcons/negation2.png'
+import github from '../assets/appletIcons/github.jpg'
 
 export const homeRoute: MathRoute = {
 	path: '/',
@@ -104,6 +105,18 @@ export const applets: MathApplet[] = [
 		type: 'game',
 		subjects: ['negation', 'arithmetic'],
 		image: negation,
+	},
+	{
+		route: {
+			redirect: true,
+			path: 'https://github.com/a1994lex/math-but-more',
+			main: null,
+			name: 'Additional Resources',
+		},
+		description: 'Follow the link to our Github repo',
+		type: 'other',
+		subjects: [],
+		image: github,
 	},
 ]
 

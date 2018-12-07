@@ -11,9 +11,15 @@ type Props = {
 function LaunchButton(props: Props) {
 	return (
 		<div className="LaunchButtonContainer">
-			<Link to={{ pathname: props.route.path }} key={props.route.path}>
-				<div className="LaunchButton">Launch {props.route.name}!</div>
-			</Link>
+			{props.route.redirect ? (
+				<a href={props.route.path}>
+					<div className="LaunchButton">Launch {props.route.name}!</div>
+				</a>
+			) : (
+				<Link to={{ pathname: props.route.path }} key={props.route.path}>
+					<div className="LaunchButton">Launch {props.route.name}!</div>
+				</Link>
+			)}
 		</div>
 	)
 }
