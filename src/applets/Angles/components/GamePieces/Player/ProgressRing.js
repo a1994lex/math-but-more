@@ -21,9 +21,10 @@ export default class ProgressRing extends Component<Props> {
 
 		const pathData = [
 			`M ${startX} ${startY}`,
-			`A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
+			`A 1 1 0 ${largeArcFlag} 0 ${endX} ${endY}`,
 			`L 0 0`,
 		].join(' ')
+
 		return (
 			<svg
 				x={location.x - radius}
@@ -33,12 +34,27 @@ export default class ProgressRing extends Component<Props> {
 				width={radius * 2}
 				height={radius * 2}>
 				<path style={{ zIndex: '5' }} fill="#61C0BF" d={pathData} />
+				<line
+					x1="0"
+					y1="1"
+					x2="0"
+					y2="-1"
+					style={{ stroke: '#346665', strokeWidth: 0.02, zIndex: '6' }}
+				/>
+				<line
+					x1="-1"
+					y1="0"
+					x2="1"
+					y2="0"
+					style={{ stroke: '#346665', strokeWidth: 0.02, zIndex: '6' }}
+				/>
 			</svg>
 		)
 	}
+
 	getCoordinatesForPercent(percent: number) {
 		const x = Math.cos(2 * Math.PI * percent)
-		const y = Math.sin(2 * Math.PI * percent)
+		const y = -Math.sin(2 * Math.PI * percent)
 		return [x, y]
 	}
 }
