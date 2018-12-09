@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import type { Token, Radian, Degree, Location } from '../../../types'
+import type { Token, Radian as RadianType, Degree, Location } from '../../../types'
+import Radian from './Radian'
 import { radiansToDegrees } from '../../../helpers'
 import { Spring } from 'react-spring'
 import { TimingAnimation } from 'react-spring/dist/addons'
@@ -23,7 +24,7 @@ export default class Piece extends Component<Props, State> {
 		const { token } = props
 		let color
 		if (token.value.type === 'radian') {
-			const radialValue: Radian = token.value
+			const radialValue: RadianType = token.value
 			color = this.getColor(radiansToDegrees(radialValue))
 		} else {
 			const degreeValue: Degree = token.value
@@ -35,9 +36,17 @@ export default class Piece extends Component<Props, State> {
 			travellingTo: props.canRender ? props.getNewSpot() : null,
 		}
 	}
+	componentDidMount() {
+		this.mounted = true
+	}
+	componentWillUnmount() {
+		this.mounted = false
+	}
 	componentDidUpdate(prevProps: Props) {
 		if (!prevProps.canRender && this.props.canRender) {
-			this.setState({ travellingTo: this.props.getNewSpot() })
+			if (this.mounted) {
+				this.setState({ travellingTo: this.props.getNewSpot() })
+			}
 		}
 	}
 	getTravelDistance = (travellingTo: Location, travellingFrom: Location) => {
@@ -54,12 +63,17 @@ export default class Piece extends Component<Props, State> {
 		return (
 			<Spring
 				impl={TimingAnimation}
-				config={{ duration: this.getTravelDistance(this.state.travellingTo, token.point) * 0.6 }}
+				config={{
+					friction: 0,
+					duration: this.getTravelDistance(this.state.travellingTo, token.point) * 0.8,
+				}}
 				to={this.state.travellingTo}
 				from={token.point}
-				onFrame={(location: Location) => onUpdate(location, token.id)}
+				onFrame={(location: Location) => this.mounted && onUpdate(location, token.id)}
 				onRest={() => {
-					this.setState({ travellingTo: getNewSpot() })
+					if (this.mounted) {
+						this.setState({ travellingTo: getNewSpot() })
+					}
 				}}>
 				{location => this.renderContent(location)}
 			</Spring>
@@ -69,20 +83,15 @@ export default class Piece extends Component<Props, State> {
 	renderContent = (location: Location): Object => {
 		const { token } = this.props
 		if (token.value.type === 'radian') {
-			const radialValue: Radian = token.value
+			const radialValue: RadianType = token.value
 			return this.renderRadian(radialValue, location)
 		}
 		const degreeValue: Degree = token.value
 		return this.renderDegree(degreeValue, location)
 	}
 
-	renderRadian = (radian: Radian, location: Location) => {
+	renderRadian = (radian: RadianType, location: Location) => {
 		if (radian) {
-			const numeratorClass = `${
-				radian.denominator !== 1 && radian.denominator !== 0
-					? 'numerator-underline'
-					: 'whole-number'
-			}`
 			return (
 				<foreignObject
 					style={{ ...location }}
@@ -91,22 +100,7 @@ export default class Piece extends Component<Props, State> {
 						xmlns="http://www.w3.org/1999/xhtml"
 						className={`fraction Piece ${this.state.color}`}
 						style={{ textAlign: 'center', zIndex: '1' }}>
-						{radian.numerator === 0 ? (
-							<div className={numeratorClass}>
-								{0}
-								&pi;
-							</div>
-						) : radian.numerator !== 1 ? (
-							<div className={numeratorClass}>
-								{radian.numerator}
-								&pi;
-							</div>
-						) : (
-							<div className={numeratorClass}>&pi;</div>
-						)}
-						<div className="denominator">
-							{radian.denominator !== 1 && radian.denominator !== 0 ? radian.denominator : ''}
-						</div>
+						<Radian radian={{ numerator: radian.numerator, denominator: radian.denominator }} />
 					</div>
 				</foreignObject>
 			)
