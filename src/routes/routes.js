@@ -95,16 +95,16 @@ export const applets: MathApplet[] = [
 	},
 	{
 		route: {
-			path: '/negationreflex',
-			main: NegationReflex,
-			name: 'Negation Reflex',
-		},
-		description: 'Practice adding and subtracting with negative numbers',
-		instructions:
-			'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service. Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.',
-		type: 'game',
-		subjects: ['negation', 'arithmetic'],
-		image: negation,
+            path: '/negationreflex',
+            main: NegationReflex,
+            name: 'Negation Reflex',
+        },
+        description: 'Practice basic integer arithmetic with negative numbers',
+        instructions:
+            'Put your answer in the text box and press enter. On completion, red text indicates a wrong answer, blue indicates a correct answer. Click the "play again?" text to play the game again.',
+        type: 'game',
+        subjects: ['negation', 'arithmetic'],
+        image: negation,
 	},
 	{
 		route: {
