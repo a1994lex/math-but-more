@@ -73,7 +73,7 @@ export const applets: MathApplet[] = [
 			main: TransMatrice,
 			name: 'Translation Matrix',
 		},
-		description: 'Explore how matrices are used to transform shapes in computer graphics',
+		description: 'Explore how matrices transform images',
 		instructions:
 			'Every image can be represented by a series of points that genreally look like: Point(x, y) these points can be manipulated by multiplying them with data structures called matrices. The simplest things you can do with an image and a matrix are moving it (Translation), turning it (Rotation) and making it bigger or smaller (Scaling). Try warping the image with the input field.',
 		type: 'demo',
@@ -86,7 +86,7 @@ export const applets: MathApplet[] = [
 			main: WordProblems,
 			name: 'Word Problems',
 		},
-		description: 'Solve word problems involving arithmetic and algebra concepts',
+		description: 'Solve word problems using algebra concepts',
 		instructions:
 			"Use your mad math skills to solve the problem, type the answer in the box, and click 'Check Answer'",
 		type: 'game',
